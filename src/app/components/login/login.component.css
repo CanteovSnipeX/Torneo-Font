@@ -7,32 +7,40 @@ body{
     padding-top: 90px;
     padding-bottom: 15%;
     background-color: black;
+
 }
 
-h1{
-    color: white;
+
+.bd-placeholder-img{
+    font-size: 1.1rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 
-label{
-    color:white;
+@media (min-width: 768px){
+    .bd-placeholder-img-lg{
+        font-size: 3rem;
+    }
 }
+
 
 .form-signin{
     width: 100%;
-    max-width: 330px;
+    max-width: 400px;
+    padding: 15px;
     margin: auto;
+    background-color: white;
+    border-radius: 15px;
 }
 
-.form-signin .form-control{
+.form-control{
     position: relative;
     box-sizing: border-box;
     height: auto;
     padding: 10px;
-    font-size: 16px;
-}
-
-.form-control:focus{
-    z-index: 2;
+    font-size: 15px;
 }
 
 button{

@@ -14,6 +14,9 @@ import { CreatetorneoComponent } from './components/createtorneo/createtorneo.co
 import { CreategroupComponent } from './components/creategroup/creategroup.component';
 import { CreateteamComponent } from './components/createteam/createteam.component';
 import { ResultComponent } from './components/result/result.component';
+import { SaveUserByAdminComponent } from './components/save-user-by-admin/save-user-by-admin.component';
+
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { ResultComponent } from './components/result/result.component';
     CreatetorneoComponent,
     CreategroupComponent,
     CreateteamComponent,
-    ResultComponent
+    ResultComponent,
+    SaveUserByAdminComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
