@@ -10,6 +10,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { CreatetorneoComponent } from './components/createtorneo/createtorneo.component';
+import { CreategroupComponent } from './components/creategroup/creategroup.component';
+import { CreateteamComponent } from './components/createteam/createteam.component';
+import { ResultComponent } from './components/result/result.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { LoginComponent } from './components/login/login.component';
     NavbarComponent,
     NotFoundComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    CreatetorneoComponent,
+    CreategroupComponent,
+    CreateteamComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
