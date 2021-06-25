@@ -5,6 +5,6 @@ export const fadeIn = trigger('fadeIn', [
         style({
           opacity: 0
         }),
-        animate('1000ms linear')
+        animate('500ms linear')
       ])
     ])
