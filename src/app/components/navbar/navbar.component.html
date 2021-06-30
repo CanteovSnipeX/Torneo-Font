@@ -7,42 +7,65 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav  ml-auto mb-2 mb-lg-0" >
           <li class="nav-item">
-            <a class="nav-link "  routerLink="/home" routerLinkActivate="active">Home</a>
+            <a class="nav-link " *ngIf="token == null" routerLink="/home" routerLinkActivate="active">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link "  routerLink="/home-admin" routerLinkActivate="active">Home Admin</a>
+            <a class="nav-link" *ngIf="token == null" routerLink="/register" routerLinkActivate="active">Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/register" routerLinkActivate="active">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/login"  routerLinkActivate="active">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/saveUserByAdmin"  routerLinkActivate="active">SaveUserByAdmin </a>
+            <a class="nav-link" *ngIf="token == null" routerLink="/login">Login</a>
           </li>
           <li class="nav-item dropdown" *ngIf="token != null || token != undefined">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               More options
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" routerLink="/perfil">Perfil</a></li>
-              <li><a class="dropdown-item" routerLink="/createTorneo">Create Torneo</a></li>
-              <li><a class="dropdown-item" routerLink="/createGroup">CreateGroup</a></li>
-              <li><a class="dropdown-item" routerLink="/createTeam">Create Team</a></li>
-              <li><a class="dropdown-item" routerLink="/result">Result</a></li>
-              <li><a class="dropdown-item" routerLink="/listuser">listUser</a></li>
-              <li><a class="dropdown-item" routerLink="/listTorneo">listTorneo</a></li>
-              <li><a class="dropdown-item" routerLink="/listEquipo">listEquipo</a></li>
-              <li><a class="dropdown-item" routerLink="/tabla">Tabla de posiciones</a></li>
-              <li><a class="dropdown-item" routerLink="/graficas">Graficas</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" (click)="logOut()">Sign out</a></li>
+              <li><a class="dropdown-item" *ngIf="user.role == 'ROLE_ADMIN'" routerLink="/createTorneo">Create Torneo</a></li>
+              <li><a class="dropdown-item" routerLink="/listTorneo">Torneos Creados</a></li>
+            
+              <li><a class="dropdown-item" *ngIf="user.role == 'ROLE_ADMIN'" routerLink="/listuser">listUser</a></li>
+              <li><a class="dropdown-item"  routerLink="/createGroup">CreateGroup</a></li>
+              <li><a class="dropdown-item"  routerLink="/createTeam">Create Team</a></li>
+              <li><a class="dropdown-item"  routerLink="/result">Result</a></li>
+              <li><a class="dropdown-item"  routerLink="/listEquipo">listEquipo</a></li>
+              <li><a class="dropdown-item"  routerLink="/tabla">Tabla de posiciones</a></li>
+              <li><a class="dropdown-item"  routerLink="/graficas">Graficas</a></li>
             </ul>
+          </li>
+        </ul>
+        <ul class="navbar-nav position-absolute top-50 end-0 translate-middle-y" *ngIf="token != null">
+          <li class="nav-item">
+            <a class="nav-link"  href="#" data-bs-toggle="modal" data-bs-target="#exampleModal1">{{user.username}}</a>
+          </li>
+          <li class="nav-item dropdown">
+            <img *ngIf="user.image" width="40" height="40"  id="imgUser" src="{{uri+'getImage/'+user.image}}" alt="user image">
           </li>
         </ul>
       </div>
     </div>
 </nav>
+
+<!-- Modal cerrar -->
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-sm ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">LogOut</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <h5 class="modal-title" >Are you sure to log out</h5>
+        <h1 class="h3 mb-3 font-weight-normal">{{user.username}}</h1> 
+        <img width="70" height="70" *ngIf="user.image" id="imgUser" src="{{uri+'getImage/'+user.image}}" alt="user image">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary text-center mx-4"  data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger text-center mx-4" data-bs-dismiss="modal" (click)="logOut()">LogOut</button>
+      </div>
+    </div>
+  </div>
+</div>

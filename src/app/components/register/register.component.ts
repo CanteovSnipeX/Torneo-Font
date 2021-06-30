@@ -10,6 +10,7 @@ import { RestUserService } from 'src/app/services/restUser/rest-user.service';
   animations:[fadeIn]
 })
 export class RegisterComponent implements OnInit {
+  
   public user:User;
   message;
   username:string;

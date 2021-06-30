@@ -51,3 +51,8 @@ button:hover{
     transition: all 1s;
     background-color: #B3B6B7;
 }
+
+
+img#img{
+    border-radius: 45px;
+}

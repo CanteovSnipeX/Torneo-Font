@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { CONNECTION } from '../global';
 import { map } from 'rxjs/operators';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +16,10 @@ export class RestUserService {
     })
   };
 
+
+
+  public user;
+  public token;
   private extractData(res: Response){
     let body = res;
     return body || [] || {};
@@ -23,6 +28,26 @@ export class RestUserService {
 
   constructor(private http:HttpClient) { 
     this.uri = CONNECTION.URI;
+  }
+
+  getUser(){
+    let user = JSON.parse(localStorage.getItem('user'));
+    if(user != undefined || user != null){
+      this.user = user
+    }else{
+      this.user = null;
+    }
+    return this.user;
+  }
+
+  getToken(){
+    let token = localStorage.getItem('token');
+    if(token != undefined || token != null){
+      this.token = token;
+    }else{
+      this.token = null
+    }
+    return this.token;
   }
 
   saveUser(user){
@@ -36,6 +61,30 @@ export class RestUserService {
     return this.http.post(this.uri+ 'login', params, this.httpOptions).pipe(map(this.extractData))
   }   
 
+  updateUser(userToUpdate){
+    let params = JSON.stringify(userToUpdate);
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    });
+    return this.http.put(this.uri+'updateUser/'+userToUpdate._id, params, {headers: headers}).pipe(map(this.extractData))
+  }
+
+  deleteUser(idUser, password){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    });
+    return this.http.put(this.uri+'removeUser/'+idUser, {password: password}, {headers:headers}).pipe(map(this.extractData))
+  }
+
+  getUsers(){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    })
+    return this.http.get(this.uri+'getUsers', {headers: headers}).pipe(map(this.extractData))
+  }
 
 
 }

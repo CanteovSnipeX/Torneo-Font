@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
   animations: [fadeIn]
 })
 export class LoginComponent implements OnInit {
-  public user:User;
+
+  user:User;
   token:string;
   userLogged;
 
@@ -23,19 +24,20 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    this.restUser.login(this.user, 'true').subscribe((res:any)=>{
+    this.restUser.login(this.user,'true').subscribe((res:any)=>{
       if(!res.token){
         alert(res.message)
       }else{
-        this.userLogged = res.user;
         this.token = res.token;
+        this.userLogged = res.user;
         delete this.userLogged.password;
         if(this.token.length <= 0){
           alert('El token no se generó o capturó de manera correcta');
         }else{
           localStorage.setItem('token', this.token);
           localStorage.setItem('user', JSON.stringify(this.userLogged));
-          alert('Usuario logeado ');
+          alert('Usuario logeado');
+          
           this.router.navigateByUrl('home');
         }
       }

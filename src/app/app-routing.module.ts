@@ -12,33 +12,33 @@ import { ListuserComponent } from './components/listuser/listuser.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ResultComponent } from './components/result/result.component';
-import { SaveUserByAdminComponent } from './components/save-user-by-admin/save-user-by-admin.component';
+
 import { TablePosicionesComponent } from './components/table-posiciones/table-posiciones.component';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
-  {path:'', component: HomeComponent},
-  {path:'', redirectTo:'home', pathMatch: 'full'},
+  {path: '', component: HomeComponent},
+  {path: '', redirectTo:'home', pathMatch: 'full'},
   {path: 'home' , component: HomeComponent},
   {path: 'navbar' , component:NavbarComponent},
   {path: 'register' , component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'createTorneo', component: CreatetorneoComponent},
+  {path: 'createTorneo',canActivate:[AdminGuard], component: CreatetorneoComponent},
   {path: 'createGroup', component: CreategroupComponent},
   {path: 'createTeam', component: CreateteamComponent},
   {path: 'result', component: ResultComponent},
-  {path: 'saveUserByAdmin' , component: SaveUserByAdminComponent},
-  {path: 'listuser', component: ListuserComponent},
+
+  {path: 'listuser', canActivate:[AdminGuard], component: ListuserComponent},
   {path: 'perfil', component:PerfilComponent},
-  {path: 'home-admin',component: HomeAdminComponent},
+  {path: 'home-admin',canActivate:[AdminGuard], component: HomeAdminComponent},
   {path: 'tabla', component:TablePosicionesComponent},
   {path: 'listTorneo', component:ListorneoComponent },
   {path: 'listEquipo',component:ListEquipoComponent},
   {path: 'graficas',component:GraphicsEquipoComponent},
-  {path: '**' , component:NotFoundComponent},
+  {path: '**', component:NotFoundComponent},
 ];
 
 @NgModule({
