@@ -1,16 +1,115 @@
-<body class="text-center">
-    <form class="form-signin">
-        <img  class="mb-4" width="75" height="75" src="../../../assets/img/colaboracion.png" alt="register">
-            <h1 class="h3 mb-3 font-weight-normal" >Create Team</h1>
-                <div class="form-group">
-                    <label for="" class="form-label"> Nombre del Equipo</label>
-                    <input class="form-control" type="text">
-                </div>
-                <div class="form-group">
-                    <label for="" class="form-label">No.Intergrantes</label>
-                    <input  class="form-control" type="text">
-                </div><br>
+<body >
+    <div id="title" class="text-center">
+        <h1>Crear Equipo</h1>
+    </div>
+    <br>
+    <div><button type="button" class="btn btn-primary col-lg-2 mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Save</button></div>
+    <hr>
 
-                <button type="submit" class="btn btn-primary">To create</button>
-    </form>
+    <!--Model Agregar-->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="form-signin">
+                    <img  class="mb-4" width="75" height="75" src="../../../assets/img/colaboracion.png" alt="register">
+                        <h1 class="h3 mb-3 font-weight-normal" >Create Team</h1>
+                            <div class="form-group">
+                                <label for="" class="form-label"> Nombre del Equipo</label>
+                                <input class="form-control" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">No.Intergrantes</label>
+                                <input  class="form-control" type="text">
+                            </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">To create</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!--Modal ELiminar-->
+
+    <div class="modal fade" id="exampleModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img class="mb-4" width="75" height="75" src="../../../assets/img/borrar.png" alt="Delete">
+                <h1 class="h3 mb-3 font-weight-normal">This action is irreversible!</h1>
+                  <form >
+                      <label for="inputName"></label>
+                      <input class="form-control" type="password" id="inputName" placeholder="Password"> 
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!--Modal Update-->
+
+    <div class="modal fade" id="exampleModalUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <form class="form-signin">
+                    <img  class="mb-4" width="75" height="75" src="../../../assets/img/colaboracion.png" alt="register">
+                        <h1 class="h3 mb-3 font-weight-normal" >Create Team</h1>
+                            <div class="form-group">
+                                <label for="" class="form-label"> Nombre del Equipo</label>
+                                <input class="form-control" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">No.Intergrantes</label>
+                                <input  class="form-control" type="text">
+                     </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!--card list-->
+<div>
+    <div class="card text-center" style="width: 18rem;">
+        <img src="../../../assets/img/united.png" width="200" height="200" class="ounded mx-auto d-block" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Datos</h5>
+          <hr>
+          <p class="card-text">Name</p>
+          <p class="card-text">Director</p>
+          <br>
+          <button type="button" class="btn btn-success mx-4" data-bs-toggle="modal" data-bs-target="#exampleModalUpdate">
+            Update
+          </button>
+          <button type="button" class="btn btn-danger mx-4" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
+            Delete
+        </button>
+        </div>
+      </div>
+</div>
 </body>

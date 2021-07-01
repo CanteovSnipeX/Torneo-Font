@@ -1,15 +1,139 @@
-<body class="text-center">
-    <form class="form-signin">
-        <img  class="mb-4" width="75" height="75" src="../../../assets/img/united.png" alt="register">
-        <h1 class="h3 mb-3 font-weight-normal" >Create Group</h1>
-    <div class="form-group">
-        <label for="inputName" class="form-label">Name</label>
-        <input class="form-control" type="text" id="inputName" placeholder="Name">
+<body >
+   <div id="title"><h1 class="text-center">Create Gourp</h1></div><br>
+   <div class="text-center"><button type="button" class="btn btn-primary col-lg-2 mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Save</button>
+    <button type="submit" class="btn btn-secondary col-lg-2 mx-2">Grupos Creados</button>
     </div>
-    <div class="form-group">
-        <label for="inputDirector" class="form-label">Director Tecnico</label>
-        <input class="form-control" type="text" id="inputDirector" placeholder="Name Director">
-    </div><br>
-    <button type="submit" class="btn btn-primary">To Create</button>
-    </form>
+   <hr>
+
+<div >
+    <div class="card" style="width: 18rem;">
+        <img src="../../../assets/img/group.png" class="card-img-top" alt="" data-bs-toggle="modal" data-bs-target="#exampleModalList">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <button type="button" class="btn btn-success  mx-4"  data-bs-toggle="modal" data-bs-target="#exampleModalUpdate">
+            Update
+          </button>
+          <button type="button" class="btn btn-danger  mx-4" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
+            Delete
+          </button>
+        </div>
+      </div>
+</div>
+
+<!-- Modal Save-->
+
+<div class="modal fade text-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Save</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form class="form-signin">
+                <img  class="mb-4" width="75" height="75" src="../../../assets/img/united.png" alt="register">
+                <h1 class="h3 mb-3 font-weight-normal">Create Group</h1>
+            <div class="form-group">
+                <label for="inputName" class="form-label">Name</label>
+                <input class="form-control" type="text" id="inputName" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="inputDirector" class="form-label">Director Tecnico</label>
+                <input class="form-control" type="text" id="inputDirector" placeholder="Name Director">
+            </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">To Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal Update-->
+
+<div class="modal fade text-center" id="exampleModalUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">UPDATE DATA</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form class="form-signin">
+                <img  class="mb-4" width="75" height="75" src="../../../assets/img/united.png" alt="register">
+                <h1 class="h3 mb-3 font-weight-normal">Create Group</h1>
+            <div class="form-group">
+                <label for="inputName" class="form-label">Name</label>
+                <input class="form-control" type="text" id="inputName" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="inputDirector" class="form-label">Director Tecnico</label>
+                <input class="form-control" type="text" id="inputDirector" placeholder="Name Director">
+            </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--Modal delete-->
+
+<div class="modal fade" id="exampleModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">DELETE DATA</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+            <img class="mb-4" width="75" height="75" src="../../../assets/img/borrar.png" alt="Delete">
+            <h1 class="h3 mb-3 font-weight-normal">This action is irreversible!</h1>
+              <form >
+                  <label for="inputName"></label>
+                  <input class="form-control" type="password" id="inputName" placeholder="Password"> 
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+ <!--Modal List --> 
+
+ <div class="modal fade" id="exampleModalList" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl text-center">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">List Team</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="card" style="width: 18rem;">
+                <img width="100" height="100"  src="../../../assets/img/united.png" class="ounded mx-auto d-block" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Data Team</h5>
+                    <hr>
+                    <p class="card-text">Name</p>
+                    <p class="card-text">nintegrantes</p>
+                </div>
+              </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </body>

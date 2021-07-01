@@ -1,4 +1,4 @@
-<body class="text-center">
+<body class="text-center" [@fadeIn]>
     <!--BarraAcciones-->
     <div id="title">
         <h1 class="text-left">Crear Torneo</h1>
@@ -12,43 +12,46 @@
           </button>
     </div>
     <hr>
+    
     <!--Modal Agregar Torneo-->
+
     <div class="text-center">
     <div class="modal fade" id="exampleModalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Save</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="form-signin">
+                <form class="form-signin" (ngSubmit)="onSubmit(saveTorneo)" #saveTorneo="ngForm" >
                     <img  class="mb-4" width="75" height="75" src="../../../assets/img/torneo.png" alt="register">
                         <h1 class="h3 mb-3 font-weight-normal" >Create Torneo</h1>
                         <div class="form-gruop">
-                            <label for="" class="form-label" >Name</label>
-                            <input class="form-control" type="text">
+                            <label  for="inputNametorneo" class="form-label" >Name</label>
+                            <input  [(ngModel)]="torneo.name" class="form-control" id="inputNametorneo" type="text" placeholder="Name" name="nametorneo" required>
                         </div>
-                        <label for="inputGroupSelect01">Type</label>
-                        <div class="input-group">
-                            <select class="form-select" id="inputGroupSelect01">
-                              <option selected>Options</option></select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Awards</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                          </div>
+                        <div class="form-gruop">
+                          <label for="inputTypetournamen" class="form-label" >Type</label>
+                          <input [(ngModel)]="torneo.typetournamen"  class="form-control" type="text" placeholder="Type" id="inputTypetournamen" name="type" required>
+                      </div>
+                        <div class="form-gruop">
+                            <label for="inputAwards" class="form-label">Awards</label>
+                            <input [(ngModel)]="torneo.awards" class="form-control" type="text" placeholder="Awards" id="inputAwards" name="awards" required>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="!saveTorneo.form.valid">Save</button>
+                      </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     <!--Modal eliminar torneo-->
+
     <div class="modal fade" id="exampleModalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -73,6 +76,7 @@
       </div>
 
     <!--Modal Actualizar toneo-->
+
     <div class="modal fade" id="exampleModalActualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -113,6 +117,7 @@
       </div>
 
     <!--Moda List-->
+
     <div id="cards">
     <div class="card" style="width: 18rem;">
         <img width="200" height="200" src="../../../assets/img/torneo (2).png" class="rounded mx-auto d-block" alt="..." id="img">

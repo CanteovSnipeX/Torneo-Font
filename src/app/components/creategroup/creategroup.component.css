@@ -1,15 +1,12 @@
 body{
-    height: 100%;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    padding-top: 90px;
-    padding-bottom: 15%;
-    background-color: black;
-
+padding: 10px;
 }
 
+#title{
+    background-color: black;
+    color: white;
+    height: 60px;
+}
 
 .bd-placeholder-img{
     font-size: 1.1rem;
