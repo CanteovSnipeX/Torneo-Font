@@ -1,20 +1,27 @@
 
-
-
 h1{
     text-align: center;
     font-size: 2.5em;
-}
-
-div.title{
-    margin: 15px;
+    color: white;
     height: 60px;
-    background-color:#ECF0F1;
+    background-color:black;
 }
 
 
-div.conteiner{
- margin: 15px;   
- margin-top: 30px;
+#cards{
+    margin: 1rem;
+    
+}
+.myWidth {
+    margin: 1.25rem;
+    display: inline-block;
+    background-color: white;
+    color: black;
+}
 
+img{
+ margin: 10px;
+  width: 170px;
+  height: 160px;
+  border-radius: 80px;
 }

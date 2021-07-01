@@ -1,25 +1,136 @@
 <body class="text-center">
-    <form class="form-signin">
-        <img  class="mb-4" width="75" height="75" src="../../../assets/img/torneo.png" alt="register">
-            <h1 class="h3 mb-3 font-weight-normal" >Create Torneo</h1>
-            <div class="form-gruop">
-                <label for="" class="form-label" >Name</label>
-                <input class="form-control" type="text">
+    <!--BarraAcciones-->
+    <div id="title">
+        <h1 class="text-left">Crear Torneo</h1>
+    </div>
+    <div id="connt">
+        <button type="button" class="btn btn-primary col-lg-2 mx-2" data-bs-toggle="modal" data-bs-target="#exampleModalAgregar">
+            Save
+          </button>
+          <button type="submit" class="btn btn-secondary col-lg-2 mx-2">
+            Toneos Creados
+          </button>
+    </div>
+    <hr>
+    <!--Modal Agregar Torneo-->
+    <div class="text-center">
+    <div class="modal fade" id="exampleModalAgregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Agregar</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <label for="inputGroupSelect01">Type</label>
-            <div class="input-group">
-                <select class="form-select" id="inputGroupSelect01">
-                  <option selected>Options</option>
-                  <option value="1">Fútbol</option>
-                  <option value="2">Baloncesto</option>
-                  <option value="3">Video Game</option>
-                  <option value="4">other</option>
-                </select>
+            <div class="modal-body">
+                <form class="form-signin">
+                    <img  class="mb-4" width="75" height="75" src="../../../assets/img/torneo.png" alt="register">
+                        <h1 class="h3 mb-3 font-weight-normal" >Create Torneo</h1>
+                        <div class="form-gruop">
+                            <label for="" class="form-label" >Name</label>
+                            <input class="form-control" type="text">
+                        </div>
+                        <label for="inputGroupSelect01">Type</label>
+                        <div class="input-group">
+                            <select class="form-select" id="inputGroupSelect01">
+                              <option selected>Options</option></select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Awards</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+                </form>
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Awards</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">To Create</button>
-    </form>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Modal eliminar torneo-->
+    <div class="modal fade" id="exampleModalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Danger Zone</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <img class="mb-4" width="75" height="75" src="../../../assets/img/borrar.png" alt="Delete">
+              <h1 class="h3 mb-3 font-weight-normal">This action is irreversible!</h1>
+                <form action="">
+                    <label for="inputName"></label>
+                    <input class="form-control" type="password" id="inputName" placeholder="Password"> 
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!--Modal Actualizar toneo-->
+    <div class="modal fade" id="exampleModalActualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Update Date</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="form-signin">
+                    <img  class="mb-4" width="75" height="75" src="../../../assets/img/torneo.png" alt="register">
+                        <h1 class="h3 mb-3 font-weight-normal" >Create Torneo</h1>
+                        <div class="form-gruop">
+                            <label for="" class="form-label" >Name</label>
+                            <input class="form-control" type="text">
+                        </div>
+                        <label for="inputGroupSelect01">Type</label>
+                        <div class="input-group">
+                            <select class="form-select" id="inputGroupSelect01">
+                              <option selected>Options</option>
+                              <option value="1">Fútbol</option>
+                              <option value="2">Baloncesto</option>
+                              <option value="3">Video Game</option>
+                              <option value="4">other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Awards</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-success">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!--Moda List-->
+    <div id="cards">
+    <div class="card" style="width: 18rem;">
+        <img width="200" height="200" src="../../../assets/img/torneo (2).png" class="rounded mx-auto d-block" alt="..." id="img">
+        <div class="card-body">
+          <h5 class="card-title">Data tournament</h5>
+          <hr>
+          <p class="card-text">Name</p>
+          <p class="card-text">Type</p>
+          <p class="card-text">Awards</p>
+
+        <button type="button" class="btn btn-success mx-4" data-bs-toggle="modal" data-bs-target="#exampleModalActualizar">
+            Update
+          </button>
+         <button type="button" class="btn btn-danger mx-4" data-bs-toggle="modal" data-bs-target="#exampleModalEliminar">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
 </body>

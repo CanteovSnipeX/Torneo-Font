@@ -15,6 +15,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ResultComponent } from './components/result/result.component';
+import { SaveUserByAdminComponent } from './components/save-user-by-admin/save-user-by-admin.component';
 
 import { TablePosicionesComponent } from './components/table-posiciones/table-posiciones.component';
 import { AdminGuard } from './guards/admin.guard';
@@ -26,11 +27,11 @@ const routes: Routes = [
   {path: 'navbar' , component:NavbarComponent},
   {path: 'register' , component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'createTorneo',canActivate:[AdminGuard], component: CreatetorneoComponent},
+  {path: 'createTorneo', component: CreatetorneoComponent},
   {path: 'createGroup', component: CreategroupComponent},
   {path: 'createTeam', component: CreateteamComponent},
   {path: 'result', component: ResultComponent},
-
+  {path: 'saveAdmin',canActivate:[AdminGuard], component:SaveUserByAdminComponent},
   {path: 'listuser', canActivate:[AdminGuard], component: ListuserComponent},
   {path: 'perfil', component:PerfilComponent},
   {path: 'home-admin',canActivate:[AdminGuard], component: HomeAdminComponent},

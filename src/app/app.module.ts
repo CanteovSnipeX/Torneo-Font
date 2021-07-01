@@ -14,13 +14,13 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 
-
 //Services
 import { CreatetorneoComponent } from './components/createtorneo/createtorneo.component';
 import { CreategroupComponent } from './components/creategroup/creategroup.component';
 import { CreateteamComponent } from './components/createteam/createteam.component';
 import { ResultComponent } from './components/result/result.component';
 
+//
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ListuserComponent } from './components/listuser/listuser.component';
 import { RestUserService } from './services/restUser/rest-user.service';
@@ -29,6 +29,8 @@ import { ListorneoComponent } from './components/listorneo/listorneo.component';
 import { ListEquipoComponent } from './components/list-equipo/list-equipo.component';
 import { TablePosicionesComponent } from './components/table-posiciones/table-posiciones.component';
 import { GraphicsEquipoComponent } from './components/graphics-equipo/graphics-equipo.component';
+import { SaveUserByAdminComponent } from './components/save-user-by-admin/save-user-by-admin.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { GraphicsEquipoComponent } from './components/graphics-equipo/graphics-e
     ListorneoComponent,
     ListEquipoComponent,
     TablePosicionesComponent,
-    GraphicsEquipoComponent
+    GraphicsEquipoComponent,
+    SaveUserByAdminComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

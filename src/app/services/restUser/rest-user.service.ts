@@ -16,7 +16,12 @@ export class RestUserService {
     })
   };
 
-
+  public httpOptionsAuth = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    })
+  }
 
   public user;
   public token;
@@ -86,5 +91,9 @@ export class RestUserService {
     return this.http.get(this.uri+'getUsers', {headers: headers}).pipe(map(this.extractData))
   }
 
+  saverUserByAdmin(user, idAdmin){
+    let params = JSON.stringify(user);
+    return this.http.post(this.uri+'saveUserByAdmin/'+idAdmin, params, this.httpOptionsAuth).pipe(map(this.extractData))
+  }
 
 }

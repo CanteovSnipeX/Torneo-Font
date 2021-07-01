@@ -27,9 +27,7 @@ export class NavbarComponent implements OnInit , DoCheck{
     this.user = this.restUser.getUser();
   }
 
-  deleteData(){
-    localStorage.removeItem('username');
-  }
+ 
 
   logOut(){
     localStorage.clear();
