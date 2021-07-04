@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { RestGroupService } from 'src/app/services/restGroup/rest-group.service';
 import { Grupo } from 'src/app/models/grupo';
-import { RestUserService } from 'src/app/services/restUser/rest-user.service';
 import { RestTorneoService } from 'src/app/services/restTorneo/rest-torneo.service';
 import { fadeIn } from 'src/app/transitions/transitions';
+
 
 @Component({
   selector: 'app-creategroup',
@@ -13,24 +13,24 @@ import { fadeIn } from 'src/app/transitions/transitions';
 })
 export class CreategroupComponent implements OnInit {
 
+  grupos:[];
   grupo:Grupo;
   public token;
   public torneo;
-  public user
+  groupSelected:Grupo;
 
 
-  constructor( private restUser:RestUserService, private restTorneo:RestTorneoService, private restGroup:RestGroupService) { 
+  constructor( private restTorneo:RestTorneoService, private restGroup:RestGroupService) {
   this.grupo = new Grupo('','','','',[]);
   }
 
   ngOnInit(): void {
-    this.user = this.restUser.getUser();
-    this.token = this.restUser.getToken();
-    this.torneo = this.restTorneo.getTorneo();
+  this.token = this.restTorneo.getToken();
   }
 
-  onSubmit(form){
-  this.restGroup.saveGroup(this.user.torneo._id , this.grupo).subscribe((res:any)=>{
+
+  onSubmit(){
+  this.restGroup.saveGroup( this.grupo,this.torneo._id).subscribe((res:any)=>{
     if(res.ligaPush){
       alert(res.message);
     }else{
@@ -39,5 +39,33 @@ export class CreategroupComponent implements OnInit {
   },
   error => alert(error.error.message))
   }
+
+
+  updateGrupo(){
+    this.restGroup.updateGroup(this.grupo , this.groupSelected).subscribe((res:any)=>{
+      if (res.ligaUpdated){
+        localStorage.setItem('torneo', JSON.stringify(this.torneo));
+      }else{
+        alert(res.message);
+        this.torneo = this.restTorneo.getTorneo();
+        this.grupos = this.torneo.grupos;
+      }
+    },
+  error => alert(error.error.message));
+  }
+
+  deleteGrupo(){
+    this.restGroup.removeGroup(this.torneo._id, this.groupSelected._id).subscribe((res:any)=>{
+      if(res.contactRemoved){
+        alert(res.message)
+      }else{
+        alert(res.message)
+      }
+    },
+    error => alert(error.error.message));
+  }
+
+  
+ 
 
 }

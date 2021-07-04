@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RestUserService } from 'src/app/services/restUser/rest-user.service';
-
-
+import { RestTorneoService } from 'src/app/services/restTorneo/rest-torneo.service';
+import { CONNECTION } from 'src/app/services/global';
 
 @Component({
   selector: 'app-listorneo',
@@ -10,16 +9,27 @@ import { RestUserService } from 'src/app/services/restUser/rest-user.service';
 })
 export class ListorneoComponent implements OnInit {
   torneos:[];
-  user;
+  uri;
 
 
-  constructor(private restUser:RestUserService) { }
+  constructor(private restTorneo:RestTorneoService) { }
 
   ngOnInit(): void {
-    this.user = this.restUser.getUser();
-    this.torneos = this.user.torneo;
-    console.log(this.torneos);
-    
+    this.listTorneo();
+    this.uri = CONNECTION.URI
+
+  }
+
+  listTorneo(){
+    this.restTorneo.getTorneos().subscribe((res:any)=>{
+      if(res.torneo){
+        this.torneos = res.torneo;
+        console.log('Torneos cargados')
+      }else{
+        alert(res.message);
+      }
+    },
+    error => alert(error.error.message));
   }
 
 }
