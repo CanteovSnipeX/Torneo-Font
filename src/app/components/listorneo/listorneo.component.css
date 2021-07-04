@@ -25,3 +25,7 @@ img{
   height: 160px;
   border-radius: 80px;
 }
+
+#search{
+    padding: 10px;
+}

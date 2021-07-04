@@ -28,9 +28,13 @@ import { HomeAdminComponent } from './components/home-admin/home-admin.component
 import { ListorneoComponent } from './components/listorneo/listorneo.component';
 import { ListEquipoComponent } from './components/list-equipo/list-equipo.component';
 import { TablePosicionesComponent } from './components/table-posiciones/table-posiciones.component';
-import { GraphicsEquipoComponent } from './components/graphics-equipo/graphics-equipo.component';
 import { SaveUserByAdminComponent } from './components/save-user-by-admin/save-user-by-admin.component';
 import { SearchPipe } from './pipes/search.pipe';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { RestTorneoService } from './services/restTorneo/rest-torneo.service';
+import { RestGroupService } from './services/restGroup/rest-group.service';
+
+
 
 @NgModule({
   declarations: [
@@ -50,18 +54,20 @@ import { SearchPipe } from './pipes/search.pipe';
     ListorneoComponent,
     ListEquipoComponent,
     TablePosicionesComponent,
-    GraphicsEquipoComponent,
     SaveUserByAdminComponent,
-    SearchPipe
+    SearchPipe,
+    BarChartComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
-  providers: [ RestUserService],
+  providers: [ RestUserService,RestTorneoService,RestGroupService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

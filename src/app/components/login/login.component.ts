@@ -37,8 +37,11 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', this.token);
           localStorage.setItem('user', JSON.stringify(this.userLogged));
           alert('Usuario logeado');
-          
-          this.router.navigateByUrl('home');
+          if(this.userLogged.role == 'ROLE_ADMIN'){
+            this.router.navigateByUrl('home-admin');
+          }else{
+            this.router.navigateByUrl('home');
+          }
         }
       }
     },

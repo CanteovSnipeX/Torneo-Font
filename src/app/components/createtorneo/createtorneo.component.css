@@ -21,7 +21,7 @@ button{
     margin-top: 20px;
 }
 
-div#title{
+#title{
     background-color: black;
     color: white;
 }
@@ -61,5 +61,12 @@ img#img{
 
 #cards{
     margin: 1rem;
-    
+}
+
+.myClass{
+    margin: 1.25rem;
+    display: inline-block;
+    background-color: white;
+    color: black;
+
 }

@@ -3,6 +3,7 @@ export class Grupo {
         public _id: string,
         public name: string,
         public Directors:String,
-        public image:String
+        public image:String,
+        public team:[]
         ){}
 }

@@ -79,7 +79,7 @@ export class RestUserService {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
-    });
+    }); 
     return this.http.put(this.uri+'removeUser/'+idUser, {password: password}, {headers:headers}).pipe(map(this.extractData))
   }
 

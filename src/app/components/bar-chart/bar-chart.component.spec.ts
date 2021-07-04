@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GraphicsEquipoComponent } from './graphics-equipo.component';
+import { BarChartComponent } from './bar-chart.component';
 
-describe('GraphicsEquipoComponent', () => {
-  let component: GraphicsEquipoComponent;
-  let fixture: ComponentFixture<GraphicsEquipoComponent>;
+describe('BarChartComponent', () => {
+  let component: BarChartComponent;
+  let fixture: ComponentFixture<BarChartComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GraphicsEquipoComponent ]
+      declarations: [ BarChartComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GraphicsEquipoComponent);
+    fixture = TestBed.createComponent(BarChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

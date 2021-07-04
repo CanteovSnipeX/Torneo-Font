@@ -1,15 +1,16 @@
-<body class="text-center" [@fadeIn]>
+<body class="" [@fadeIn]>
     <!--BarraAcciones-->
-    <div id="title">
+    <div id="title" class="text-center">
         <h1 class="text-left">Crear Torneo</h1>
     </div>
-    <div id="connt">
+    <div id="connt" class="text-center">
         <button type="button" class="btn btn-primary col-lg-2 mx-2" data-bs-toggle="modal" data-bs-target="#exampleModalAgregar">
             Save
           </button>
-          <button type="submit" class="btn btn-secondary col-lg-2 mx-2">
+          <button type="submit" class="btn btn-secondary col-lg-2 mx-2"  routerLink="/listTorneo">
             Toneos Creados
           </button>
+          
     </div>
     <hr>
     
@@ -41,7 +42,7 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" [disabled]="!saveTorneo.form.valid">Save</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"   [disabled]="!saveTorneo.form.valid">Save</button>
                       </div>
                 </form>
             </div>
@@ -52,24 +53,23 @@
 
     <!--Modal eliminar torneo-->
 
-    <div class="modal fade" id="exampleModalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade  text-center" id="exampleModalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Danger Zone</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
             <div class="modal-body">
               <img class="mb-4" width="75" height="75" src="../../../assets/img/borrar.png" alt="Delete">
               <h1 class="h3 mb-3 font-weight-normal">This action is irreversible!</h1>
-                <form action="">
-                    <label for="inputName"></label>
-                    <input class="form-control" type="password" id="inputName" placeholder="Password"> 
-                </form>
+              <h4 class="text-center">{{torneoSelected.name}}</h4>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-danger">Delete</button>
+              <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" (click)="deleteTorneo()"  >Delete</button>
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@
 
     <!--Modal Actualizar toneo-->
 
-    <div class="modal fade" id="exampleModalActualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade text-center" id="exampleModalActualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -87,55 +87,52 @@
             <div class="modal-body">
                 <form class="form-signin">
                     <img  class="mb-4" width="75" height="75" src="../../../assets/img/torneo.png" alt="register">
-                        <h1 class="h3 mb-3 font-weight-normal" >Create Torneo</h1>
+                        <h1 class="h3 mb-3 font-weight-normal" >Update Torneo</h1>
                         <div class="form-gruop">
                             <label for="" class="form-label" >Name</label>
-                            <input class="form-control" type="text">
-                        </div>
-                        <label for="inputGroupSelect01">Type</label>
-                        <div class="input-group">
-                            <select class="form-select" id="inputGroupSelect01">
-                              <option selected>Options</option>
-                              <option value="1">Fútbol</option>
-                              <option value="2">Baloncesto</option>
-                              <option value="3">Video Game</option>
-                              <option value="4">other</option>
-                            </select>
+                            <input [(ngModel)]="torneoSelected.name" class="form-control" type="text" name="name">
+                        </div>                        
+                        <div class="form-group">
+                          <label for="inputGroupSelect01">Type</label>
+                           <input [(ngModel)]="torneoSelected.typetournamen" type="text" class="form-control" name="typetournamen">
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">Awards</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                          </div>
+                            <input [(ngModel)]="torneoSelected.awards" name="awards"type="text" class="form-control" >
+                        </div>
                 </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-success">Update</button>
+              <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="updateTorneo()">Update</button>
             </div>
           </div>
         </div>
       </div>
 
-    <!--Moda List-->
 
-    <div id="cards">
-    <div class="card" style="width: 18rem;">
-        <img width="200" height="200" src="../../../assets/img/torneo (2).png" class="rounded mx-auto d-block" alt="..." id="img">
-        <div class="card-body">
-          <h5 class="card-title">Data tournament</h5>
-          <hr>
-          <p class="card-text">Name</p>
-          <p class="card-text">Type</p>
-          <p class="card-text">Awards</p>
-
-        <button type="button" class="btn btn-success mx-4" data-bs-toggle="modal" data-bs-target="#exampleModalActualizar">
-            Update
-          </button>
-         <button type="button" class="btn btn-danger mx-4" data-bs-toggle="modal" data-bs-target="#exampleModalEliminar">
-            Delete
-          </button>
+      <div id="cards" >
+        <div class="card myClass" style="width: 18rem;" *ngFor="let torneo of torneos, let i = index " >
+            <img width="200" height="200" src="../../../assets/img/torneo (2).png" class="rounded mx-auto d-block" alt="..." id="img">
+            <div class="card-body">
+              <h5 class="card-title text-center">Datas tournament</h5>
+              <hr>
+              <p class="card-text text-center">{{torneo.name}}</p>
+              <p class="card-text text-center">{{torneo.typetournamen}}</p>
+              <p class="card-text text-center">{{torneo.awards}}</p>
+              <hr>
+            <button type="button" class="btn btn-success mx-4" data-bs-toggle="modal" data-bs-target="#exampleModalActualizar" (click)="obtenerData(torneo)">
+                Update
+              </button>
+             <button type="button" class="btn btn-danger mx-4" data-bs-toggle="modal" data-bs-target="#exampleModalEliminar" (click)="obtenerData(torneo)">
+                Delete
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+
 
 </body>
+
+
+    

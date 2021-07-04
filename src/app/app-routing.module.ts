@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { CreategroupComponent } from './components/creategroup/creategroup.component';
 import { CreateteamComponent } from './components/createteam/createteam.component';
 import { CreatetorneoComponent } from './components/createtorneo/createtorneo.component';
-import { GraphicsEquipoComponent } from './components/graphics-equipo/graphics-equipo.component';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListEquipoComponent } from './components/list-equipo/list-equipo.component';
@@ -34,11 +34,11 @@ const routes: Routes = [
   {path: 'saveAdmin',canActivate:[AdminGuard], component:SaveUserByAdminComponent},
   {path: 'listuser', canActivate:[AdminGuard], component: ListuserComponent},
   {path: 'perfil', component:PerfilComponent},
-  {path: 'home-admin',canActivate:[AdminGuard], component: HomeAdminComponent},
+  {path: 'home-admin',canActivate:[AdminGuard],component: HomeAdminComponent},
   {path: 'tabla', component:TablePosicionesComponent},
   {path: 'listTorneo', component:ListorneoComponent },
   {path: 'listEquipo',component:ListEquipoComponent},
-  {path: 'graficas',component:GraphicsEquipoComponent},
+  {path: 'graphics', component:BarChartComponent},
   {path: '**', component:NotFoundComponent},
 ];
 
