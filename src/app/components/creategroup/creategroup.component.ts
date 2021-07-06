@@ -13,24 +13,25 @@ import { fadeIn } from 'src/app/transitions/transitions';
 })
 export class CreategroupComponent implements OnInit {
 
-  grupos:[];
+  Grupos:[];
   grupo:Grupo;
   public token;
   public torneo;
   groupSelected:Grupo;
 
-
   constructor( private restTorneo:RestTorneoService, private restGroup:RestGroupService) {
   this.grupo = new Grupo('','','','',[]);
+
+  
   }
 
   ngOnInit(): void {
   this.token = this.restTorneo.getToken();
+  this.torneo = this.restTorneo.getTorneo();
   }
 
-
   onSubmit(){
-  this.restGroup.saveGroup( this.grupo,this.torneo._id).subscribe((res:any)=>{
+  this.restGroup.saveGroup( this.grupo, this.torneo._id).subscribe((res:any)=>{
     if(res.ligaPush){
       alert(res.message);
     }else{
@@ -48,7 +49,7 @@ export class CreategroupComponent implements OnInit {
       }else{
         alert(res.message);
         this.torneo = this.restTorneo.getTorneo();
-        this.grupos = this.torneo.grupos;
+        this.Grupos = this.torneo.grupos;
       }
     },
   error => alert(error.error.message));
@@ -64,8 +65,5 @@ export class CreategroupComponent implements OnInit {
     },
     error => alert(error.error.message));
   }
-
-  
- 
 
 }

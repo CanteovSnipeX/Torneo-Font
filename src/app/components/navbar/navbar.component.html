@@ -20,20 +20,22 @@
           <li class="nav-item">
             <a class="nav-link" *ngIf="token == null" routerLink="/login">Login</a>
           </li>
-          <li class="nav-item dropdown" *ngIf="token != null || token != undefined">
+          <li class="nav-item dropdown" *ngIf="token != null || token != undefined ">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               More options
             </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" routerLink="/perfil">Perfil</a></li>
-              <li><a class="dropdown-item" routerLink="/createTorneo">Create Torneo</a></li>
-              <li><a class="dropdown-item"  routerLink="/createGroup">CreateGroup</a></li>
+              <li><a class="dropdown-item" routerLink="/perfil">Public profile</a></li>
+              <li><a class="dropdown-item" *ngIf="token != null &&user.role == 'ROLE_ADMIN'" routerLink="/saveAdmin">Save Admin</a></li>
+              <li><a class="dropdown-item" *ngIf="token != null &&user.role == 'ROLE_ADMIN'" routerLink="/listuser">list Users</a></li>
+              <li><a class="dropdown-item" routerLink="/createTorneo">Create Tournament</a></li>
+              <li><a class="dropdown-item"  routerLink="/createGroup">Create Group</a></li>
               <li><a class="dropdown-item"  routerLink="/createTeam">Create Team</a></li>
-              <li><a class="dropdown-item" routerLink="/listTorneo">Torneos Creados</a></li>
-              <li><a class="dropdown-item"  routerLink="/listEquipo">Grupos Creados</a></li>
+              <li><a class="dropdown-item" *ngIf="token != null &&user.role == 'ROLE_ADMIN'"  routerLink="/listTorneo">Created Tournaments</a></li>
+              <li><a class="dropdown-item" *ngIf="token != null &&user.role == 'ROLE_ADMIN'"  routerLink="/listEquipo">Groups Created</a></li>
               <li><a class="dropdown-item"  routerLink="/result">Result</a></li>
-              <li><a class="dropdown-item"  routerLink="/tabla">Tabla de posiciones</a></li>
-              <li><a class="dropdown-item"  routerLink="/graphics">Graficas</a></li>
+              <li><a class="dropdown-item"  routerLink="/tabla">Positions table</a></li>
+              <li><a class="dropdown-item"  routerLink="/graphics">Graphics</a></li>
             </ul>
           </li>
         </ul>

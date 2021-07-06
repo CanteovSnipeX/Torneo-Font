@@ -1,11 +1,12 @@
- <div id="cards">
+ <div id="cards" [@fadeIn]>
     <div>
       <h1 class="text-center" >Grupos Creados</h1>
     </div>
     <hr>
-    <form  class="form-inline mx-auto d-flex ">
-        <input type="search" class="form-control me-2" name="search" placeholder="🔍  Search">
+    <form  class="form-inline  d-flex ">
+        <input type="search" class="form-control " name="search" placeholder="🔍  Search">
         <button class="btn btn-outline-success mx-2" type="submit" routerLink="/home-admin">Home</button>
+        <button class="btn btn-outline-primary mx-2" type="submit" routerLink="/createTeam">Agregar team</button>
     </form>
     <hr>
     <div class="card myWidth text-center" style="width: 17rem;" *ngFor="let ligas of Grupos" >
@@ -15,9 +16,6 @@
         <hr>
         <p class="card-text">{{ligas.name}}</p>
         <p class="card-text">{{ligas.Directors}}</p>    
-        <button type="button" class="btn btn-success mx-4" >
-            Save Team
-        </button>
       </div>
     </div>
   </div>

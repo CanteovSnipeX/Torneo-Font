@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { RestGroupService } from 'src/app/services/restGroup/rest-group.service';
 import { CONNECTION } from 'src/app/services/global';
+import { fadeIn } from 'src/app/transitions/transitions';
 
 
 
 @Component({
   selector: 'app-list-equipo',
   templateUrl: './list-equipo.component.html',
-  styleUrls: ['./list-equipo.component.css']
+  styleUrls: ['./list-equipo.component.css'],
+  animations:[fadeIn]
 })
 export class ListEquipoComponent implements OnInit {
   Grupos:[];

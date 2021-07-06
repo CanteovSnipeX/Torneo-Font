@@ -36,8 +36,8 @@ const routes: Routes = [
   {path: 'perfil', component:PerfilComponent},
   {path: 'home-admin',canActivate:[AdminGuard],component: HomeAdminComponent},
   {path: 'tabla', component:TablePosicionesComponent},
-  {path: 'listTorneo', component:ListorneoComponent },
-  {path: 'listEquipo',component:ListEquipoComponent},
+  {path: 'listTorneo', canActivate:[AdminGuard], component:ListorneoComponent },
+  {path: 'listEquipo',canActivate:[AdminGuard] ,component:ListEquipoComponent},
   {path: 'graphics', component:BarChartComponent},
   {path: '**', component:NotFoundComponent},
 ];

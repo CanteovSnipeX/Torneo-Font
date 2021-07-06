@@ -1,9 +1,12 @@
-<body >
+<body [@fadeIn] >
     <div id="title" class="text-center">
         <h1>Crear Equipo</h1>
     </div>
     <br>
-    <div><button type="button" class="btn btn-primary col-lg-2 mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Save</button></div>
+    <div class="text-center"><button type="button" class="btn btn-primary col-lg-2 mx-2 " data-bs-toggle="modal" data-bs-target="#exampleModal">Save</button>
+    
+    
+    </div>
     <hr>
 
     <!--Model Agregar-->
@@ -19,6 +22,18 @@
                 <form class="form-signin">
                     <img  class="mb-4" width="75" height="75" src="../../../assets/img/colaboracion.png" alt="register">
                         <h1 class="h3 mb-3 font-weight-normal" >Create Team</h1>
+                        <div class="form-group">
+                          <label for="selectTorneo" class="form-label">Torneo</label>
+                          <select name="torneos" id="selectTorneo" class="form-control form-select">
+                            <option></option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="selectTorneo" class="form-label">Grupo</label>
+                          <select name="torneos" id="selectTorneo" class="form-control form-select">
+                            <option></option>
+                          </select>
+                        </div>
                             <div class="form-group">
                                 <label for="" class="form-label"> Nombre del Equipo</label>
                                 <input class="form-control" type="text">

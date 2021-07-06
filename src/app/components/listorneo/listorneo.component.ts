@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { RestTorneoService } from 'src/app/services/restTorneo/rest-torneo.service';
 import { CONNECTION } from 'src/app/services/global';
+import { fadeIn } from 'src/app/transitions/transitions';
 
 @Component({
   selector: 'app-listorneo',
   templateUrl: './listorneo.component.html',
-  styleUrls: ['./listorneo.component.css']
+  styleUrls: ['./listorneo.component.css'],
+  animations:[fadeIn]
 })
 export class ListorneoComponent implements OnInit {
   torneos:[];
   uri;
+  token
 
 
   constructor(private restTorneo:RestTorneoService) { }
@@ -17,7 +20,6 @@ export class ListorneoComponent implements OnInit {
   ngOnInit(): void {
     this.listTorneo();
     this.uri = CONNECTION.URI
-
   }
 
   listTorneo(){

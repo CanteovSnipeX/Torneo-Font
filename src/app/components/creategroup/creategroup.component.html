@@ -1,8 +1,6 @@
 <body [@fadeIn]> 
    <div id="title"><h1 class="text-center">Create Gourp</h1></div><br>
-   <div class="text-center"><button type="button" class="btn btn-primary col-lg-2 mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Save</button> |
-    <button type="submit" class="btn btn-secondary col-lg-2 mx-2" routerLink="/listEquipo">Grupos Creados</button> |
-    <button type="submit" class="btn btn-success col-lg-2 mx-2" routerLink="/listTorneo">List Toneos</button> 
+   <div class="text-center"><button type="button" class="btn btn-primary col-lg-2 mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Save</button> 
     </div>
    <hr>
 
@@ -37,6 +35,12 @@
             <form class="form-signin" (ngSubmit)="onSubmit()" #saveGroup="ngForm" >
                 <img  class="mb-4" width="75" height="75" src="../../../assets/img/united.png" alt="register">
                 <h1 class="h3 mb-3 font-weight-normal">Create Group</h1>
+                <div class="form-group">
+                  <label for="selectTorneo" class="form-label">Torneos</label>
+                  <select name="torneos" id="selectTorneo" class="form-control form-select">
+                    <option> </option>
+                  </select>
+                </div>
             <div class="form-group">
                 <label for="inputNames" class="form-label">Name</label>
                 <input  [(ngModel)]="grupo.name" class="form-control" type="text" id="inputNames" name="name" placeholder="Name" required >

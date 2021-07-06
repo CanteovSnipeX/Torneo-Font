@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { RestUserService } from 'src/app/services/restUser/rest-user.service';
 import { CONNECTION } from 'src/app/services/global';
+import { fadeIn } from 'src/app/transitions/transitions';
 
 
 @Component({
   selector: 'app-listuser',
   templateUrl: './listuser.component.html',
-  styleUrls: ['./listuser.component.css']
+  styleUrls: ['./listuser.component.css'],
+  animations:[fadeIn]
 })
 export class ListuserComponent implements OnInit {
   users:[];
