@@ -3,12 +3,12 @@
       <h1 class="text-center" >Grupos Creados</h1>
     </div>
     <hr>
-    <form  class="form-inline  d-flex ">
+    <div id="search" class="form-inline mx-auto d-flex">
         <input type="search" class="form-control " name="search" placeholder="🔍  Search">
         <button class="btn btn-outline-success mx-2" type="submit" routerLink="/home-admin">Home</button>
-        <button class="btn btn-outline-primary mx-2" type="submit" routerLink="/createTeam">Agregar team</button>
-    </form>
-    <hr>
+        <button class="btn btn-outline-primary mx-2" type="submit" routerLink="/createTeam">Teams</button>
+    </div>
+        <hr>
     <div class="card myWidth text-center" style="width: 17rem;" *ngFor="let ligas of Grupos" >
         <img width="200" height="200" src="../../../assets/img/united.png" class="rounded mx-auto d-block" alt="..." id="img">
       <div class="card-body">

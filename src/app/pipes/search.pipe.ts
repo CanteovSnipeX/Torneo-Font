@@ -16,5 +16,18 @@ export class SearchPipe implements PipeTransform {
     
 
   }
+  
+  transforms(torneos: any, search:any): any {
+    if(search == undefined){
+      return torneos;
+    }else{
+      return torneos.filter(torneos=>{
+        return torneos.name.toLowerCase().includes(search.toLowerCase());
+      })
+    }
+    
+  }
+
+
 
 }

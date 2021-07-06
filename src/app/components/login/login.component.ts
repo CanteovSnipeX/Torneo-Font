@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   user:User;
   token:string;
   userLogged;
+  message
 
   constructor( private restUser:RestUserService, private router:Router ) { 
     this.user = new User('','','','','','','','',[])
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     this.restUser.login(this.user,'true').subscribe((res:any)=>{
       if(!res.token){
+
         alert(res.message)
       }else{
         this.token = res.token;

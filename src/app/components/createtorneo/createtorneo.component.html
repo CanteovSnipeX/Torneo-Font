@@ -7,7 +7,7 @@
         <button type="button" class="btn btn-primary col-lg-2 mx-2 " data-bs-toggle="modal" data-bs-target="#exampleModalAgregar">
             Save
           </button>
-          <button type="submit" class="btn btn-secondary col-lg-2 mx-2"  routerLink="/listTorneo">
+          <button type="submit" class="btn btn-secondary col-lg-2 mx-2"  *ngIf="token != null &&user.role == 'ROLE_ADMIN'" routerLink="/listTorneo">
             Toneos Creados
           </button>
           

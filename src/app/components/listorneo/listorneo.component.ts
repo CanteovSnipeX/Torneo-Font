@@ -12,8 +12,7 @@ import { fadeIn } from 'src/app/transitions/transitions';
 export class ListorneoComponent implements OnInit {
   torneos:[];
   uri;
-  token
-
+  search;
 
   constructor(private restTorneo:RestTorneoService) { }
 

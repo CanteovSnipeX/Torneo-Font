@@ -22,13 +22,11 @@ export class CreategroupComponent implements OnInit {
   constructor( private restTorneo:RestTorneoService, private restGroup:RestGroupService) {
   this.grupo = new Grupo('','','','',[]);
 
-  
   }
 
   ngOnInit(): void {
-  this.token = this.restTorneo.getToken();
-  this.torneo = this.restTorneo.getTorneo();
-  }
+
+  } 
 
   onSubmit(){
   this.restGroup.saveGroup( this.grupo, this.torneo._id).subscribe((res:any)=>{

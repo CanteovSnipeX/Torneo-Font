@@ -34,7 +34,6 @@ export class CreatetorneoComponent implements OnInit {
   onSubmit(form){
     this.restTorneo.saveTorneo(this.user._id , this.torneo).subscribe((res:any)=>{
       if(res.torneoPush){
-        alert(res.message)
         form.reset();
         delete res.torneoPush.password;
         this.user = res.torneoPush;
@@ -70,7 +69,6 @@ export class CreatetorneoComponent implements OnInit {
   deleteTorneo(){
     this.restTorneo.removeTorneo(this.user._id , this.torneoSelected._id).subscribe((res:any)=>{
       if(res.contactPull){
-        alert(res.message);
         localStorage.setItem('user', JSON.stringify(res.contactPull)); 
         this.user = this.restUser.getUser();
         this.torneos = this.user.torneo;
