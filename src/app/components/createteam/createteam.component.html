@@ -15,7 +15,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <h5 class="modal-title" id="exampleModalLabel"></h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -58,20 +58,21 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <h5 class="modal-title" id="exampleModalLabel"></h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
                 <img class="mb-4" width="75" height="75" src="../../../assets/img/borrar.png" alt="Delete">
                 <h1 class="h3 mb-3 font-weight-normal">This action is irreversible!</h1>
+                <h5>Please type the name of the computer correctly to delete it.</h5>
                   <form >
                       <label for="inputName"></label>
-                      <input class="form-control" type="password" id="inputName" placeholder="Password"> 
+                      <input class="form-control" type="text" id="inputName" placeholder="name"> 
                   </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-danger">Delete</button>
             </div>
           </div>
         </div>
@@ -83,7 +84,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <h5 class="modal-title" id="exampleModalLabel"></h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
@@ -102,28 +103,34 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-success">Update</button>
             </div>
           </div>
         </div>
       </div>
 
+
+
     <!--card list-->
 <div>
-    <div class="card text-center" style="width: 18rem;">
-        <img src="../../../assets/img/united.png" width="200" height="200" class="ounded mx-auto d-block" alt="...">
+    <div class="card text-center" style="width: 20rem;">
+        <img  routerLink="/graphics" src="../../../assets/img/united.png" width="200" height="200" class="ounded mx-auto d-block" alt="..."z>
         <div class="card-body">
-          <h5 class="card-title">Datos</h5>
+          <h5 class="card-title">Data</h5>
           <hr>
           <p class="card-text">Name</p>
           <p class="card-text">Director</p>
           <br>
-          <button type="button" class="btn btn-success mx-4" data-bs-toggle="modal" data-bs-target="#exampleModalUpdate">
+          <button type="button" class="btn btn-success mx-2 " data-bs-toggle="modal" data-bs-target="#exampleModalUpdate">
             Update
           </button>
-          <button type="button" class="btn btn-danger mx-4" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
+          <button type="button" class="btn btn-danger mx-2" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
             Delete
         </button>
+        <button type="button" class="btn btn-primary mx-2">
+          Graphics
+       </button>
+      
         </div>
       </div>
 </div>
