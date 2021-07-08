@@ -14,10 +14,13 @@ h3{
 }
 
 #image{
-   /*height: 37.5em;*/
+   height: 37.5em;
 }
 
 a{
     color: black;
 }
 
+#list{
+    background-color:gold;
+}

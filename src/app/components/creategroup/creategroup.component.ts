@@ -13,11 +13,13 @@ import { fadeIn } from 'src/app/transitions/transitions';
 })
 export class CreategroupComponent implements OnInit {
 
+  Torneos:[] = [];
   Grupos:[];
   grupo:Grupo;
   public token;
   public torneo;
   groupSelected:Grupo;
+  torneoid:string;
 
   constructor( private restTorneo:RestTorneoService, private restGroup:RestGroupService) {
   this.grupo = new Grupo('','','','',[]);
@@ -25,11 +27,16 @@ export class CreategroupComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.restTorneo.getTorneos().subscribe((res:any)=>{
+     this.Torneos = res.torneo;
+     console.log(this.Torneos);
+    })
+ 
   } 
 
   onSubmit(){
-  this.restGroup.saveGroup( this.grupo, this.torneo._id).subscribe((res:any)=>{
+    console.log(this.torneoid);
+  this.restGroup.saveGroup(  this.torneoid, this.grupo).subscribe((res:any)=>{
     if(res.ligaPush){
       alert(res.message);
     }else{
