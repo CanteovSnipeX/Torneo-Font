@@ -57,7 +57,7 @@ export class RestGroupService {
   
    }
 
-   getLiga(){
+   getLigas(){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       "Authorization": this.getToken()

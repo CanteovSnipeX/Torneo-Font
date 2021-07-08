@@ -33,6 +33,7 @@ import { SearchPipe } from './pipes/search.pipe';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { RestTorneoService } from './services/restTorneo/rest-torneo.service';
 import { RestGroupService } from './services/restGroup/rest-group.service';
+import { CreatepartidosComponent } from './components/createpartidos/createpartidos.component';
 
 
 
@@ -57,6 +58,7 @@ import { RestGroupService } from './services/restGroup/rest-group.service';
     SaveUserByAdminComponent,
     SearchPipe,
     BarChartComponent,
+    CreatepartidosComponent,
 
   ],
   imports: [

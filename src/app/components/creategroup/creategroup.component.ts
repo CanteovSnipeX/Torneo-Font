@@ -13,7 +13,7 @@ import { fadeIn } from 'src/app/transitions/transitions';
 })
 export class CreategroupComponent implements OnInit {
 
-  Torneos:[] = [];
+  Torneos: [] = [];
   Grupos:[];
   grupo:Grupo;
   public token;
@@ -23,7 +23,6 @@ export class CreategroupComponent implements OnInit {
 
   constructor( private restTorneo:RestTorneoService, private restGroup:RestGroupService) {
   this.grupo = new Grupo('','','','',[]);
-
   }
 
   ngOnInit(): void {
@@ -31,7 +30,7 @@ export class CreategroupComponent implements OnInit {
      this.Torneos = res.torneo;
      console.log(this.Torneos);
     })
- 
+
   } 
 
   onSubmit(){

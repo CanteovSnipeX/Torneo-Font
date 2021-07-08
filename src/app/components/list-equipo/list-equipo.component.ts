@@ -24,7 +24,7 @@ export class ListEquipoComponent implements OnInit {
 
 
   listarGrupos(){
-    this.restGroup.getLiga().subscribe((res:any)=>{
+    this.restGroup.getLigas().subscribe((res:any)=>{
       if(res.ligas){
         this.Grupos = res.ligas;
         console.log('Grupos cargados');
