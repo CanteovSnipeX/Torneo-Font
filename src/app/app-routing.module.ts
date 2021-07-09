@@ -7,7 +7,9 @@ import { CreatetorneoComponent } from './components/createtorneo/createtorneo.co
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 import { HomeComponent } from './components/home/home.component';
 import { ListEquipoComponent } from './components/list-equipo/list-equipo.component';
+import { ListequiposComponent } from './components/listequipos/listequipos.component';
 import { ListorneoComponent } from './components/listorneo/listorneo.component';
+import { ListpastidosComponent } from './components/listpastidos/listpastidos.component';
 import { ListuserComponent } from './components/listuser/listuser.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -39,6 +41,8 @@ const routes: Routes = [
   {path: 'listTorneo', canActivate:[AdminGuard], component:ListorneoComponent },
   {path: 'listEquipo',canActivate:[AdminGuard] ,component:ListEquipoComponent},
   {path: 'graphics', component:BarChartComponent},
+  {path: 'listTeam', canActivate:[AdminGuard],component:ListequiposComponent},
+  {path: 'listPart', component:ListpastidosComponent},
   {path: '**', component:NotFoundComponent},
 ];
 

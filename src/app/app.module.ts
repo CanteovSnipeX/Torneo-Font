@@ -34,6 +34,8 @@ import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { RestTorneoService } from './services/restTorneo/rest-torneo.service';
 import { RestGroupService } from './services/restGroup/rest-group.service';
 import { CreatepartidosComponent } from './components/createpartidos/createpartidos.component';
+import { ListpastidosComponent } from './components/listpastidos/listpastidos.component';
+import { ListequiposComponent } from './components/listequipos/listequipos.component';
 
 
 
@@ -59,6 +61,8 @@ import { CreatepartidosComponent } from './components/createpartidos/createparti
     SearchPipe,
     BarChartComponent,
     CreatepartidosComponent,
+    ListpastidosComponent,
+    ListequiposComponent,
 
   ],
   imports: [

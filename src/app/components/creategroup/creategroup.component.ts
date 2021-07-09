@@ -3,7 +3,7 @@ import { RestGroupService } from 'src/app/services/restGroup/rest-group.service'
 import { Grupo } from 'src/app/models/grupo';
 import { RestTorneoService } from 'src/app/services/restTorneo/rest-torneo.service';
 import { fadeIn } from 'src/app/transitions/transitions';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-creategroup',
@@ -18,10 +18,11 @@ export class CreategroupComponent implements OnInit {
   grupo:Grupo;
   public token;
   public torneo;
+  group;
   groupSelected:Grupo;
   torneoid:string;
 
-  constructor( private restTorneo:RestTorneoService, private restGroup:RestGroupService) {
+  constructor( private restTorneo:RestTorneoService, private restGroup:RestGroupService, private router:Router) {
   this.grupo = new Grupo('','','','',[]);
   }
 
@@ -30,14 +31,20 @@ export class CreategroupComponent implements OnInit {
      this.Torneos = res.torneo;
      console.log(this.Torneos);
     })
+    console.log(this.Grupos);
+
 
   } 
 
-  onSubmit(){
+  onSubmit(save){
     console.log(this.torneoid);
   this.restGroup.saveGroup(  this.torneoid, this.grupo).subscribe((res:any)=>{
     if(res.ligaPush){
-      alert(res.message);
+      save.reset();
+      this.grupo = res.ligaPush;
+      localStorage.setItem('grupo', JSON.stringify(this.Grupos));
+      this.torneo = this.restGroup.getGroup();
+      this.Grupos = this.torneo.group
     }else{
       alert(res.message);
     }
@@ -69,5 +76,6 @@ export class CreategroupComponent implements OnInit {
     },
     error => alert(error.error.message));
   }
+
 
 }

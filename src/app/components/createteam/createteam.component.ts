@@ -13,7 +13,7 @@ import { RestGroupService } from 'src/app/services/restGroup/rest-group.service'
 })
 export class CreateteamComponent implements OnInit {
 
-  grupos:[];
+  Grupos:[] = [];
   Team:[];
   team :Team;
   public grupo;
@@ -23,13 +23,28 @@ export class CreateteamComponent implements OnInit {
 
 
   constructor( private restTeam:RestTeamService, private restGrupo:RestGroupService) {
-    this.team = new Team('','','','');
+    this.team = new Team('','',null,'');
    }
 
   ngOnInit(): void {
+    this.restGrupo.getGroup().subscribe((res:any)=>{
+      this.Grupos = res.ligas;
+      console.log(this.Grupos);
+    })
+
   }
 
-  onSubmit(){
+  onSubmit(save){
+    console.log(this.grupoId);
+    this.restTeam.saveTeam(this.grupoId,this.team).subscribe((res:any)=>{
+      if(res.teamPush){
+        alert(res.message);
+      }else{
+        alert(res.message);
+      }
+    },
+    error => alert(error.error.message)
+    )
 
   }
 

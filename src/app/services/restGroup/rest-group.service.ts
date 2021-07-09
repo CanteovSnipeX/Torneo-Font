@@ -57,13 +57,13 @@ export class RestGroupService {
   
    }
 
-   getLigas(){
+   getGroup(){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       "Authorization": this.getToken()
     });
   
-    return this.http.get(this.uri+'getLIga/', {headers: headers}).pipe(map(this.extractData))
+    return this.http.get(this.uri+'getLigas/', {headers: headers}).pipe(map(this.extractData))
    }
 
 

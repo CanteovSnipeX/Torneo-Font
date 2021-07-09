@@ -31,8 +31,10 @@
               <li><a class="dropdown-item" routerLink="/createTorneo">Create Tournament</a></li>
               <li><a class="dropdown-item"  routerLink="/createGroup">Create Group</a></li>
               <li><a class="dropdown-item"  routerLink="/createTeam">Create Team</a></li>
-              <li><a class="dropdown-item" *ngIf="token != null &&user.role == 'ROLE_ADMIN'"  routerLink="/listTorneo">Created Tournaments</a></li>
-              <li><a class="dropdown-item" *ngIf="token != null &&user.role == 'ROLE_ADMIN'"  routerLink="/listEquipo">Groups Created</a></li>
+              <li><a class="dropdown-item" *ngIf="token != null && user.role == 'ROLE_ADMIN'"  routerLink="/listTorneo">Created Tournaments</a></li>
+              <li><a class="dropdown-item" *ngIf="token != null && user.role == 'ROLE_ADMIN'"  routerLink="/listEquipo">Created Groups</a></li>
+              <li><a class="dropdown-item" *ngIf="token != null && user.role == 'ROLE_ADMIN'" routerLink="/listTeam">Created Equipo</a></li>
+              <li><a class="dropdown-item"  routerLink="/listPart">Created Partidos</a></li>
               <li><a class="dropdown-item"  routerLink="/result">Result</a></li>
               <li><a class="dropdown-item"  routerLink="/tabla">Positions table</a></li>
               <li><a class="dropdown-item"  routerLink="/graphics">Graphics</a></li>

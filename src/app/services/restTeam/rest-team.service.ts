@@ -17,17 +17,25 @@ export class RestTeamService {
     return body || [] || {}
   }
 
-  constructor(private http:HttpClient, private restGrupo:RestGroupService) { 
+  
+  getToken(){
+    let token = localStorage.getItem('token');
+    this.token = (token!= undefined || token != null) ? token : null;
+    
+    return token;
+  }
+
+  constructor(private http:HttpClient) { 
     this.uri = CONNECTION.URI;
   }
 
-  saveTeam(idGrupo, team){
+  saveTeam(id, team){
     let headers = new HttpHeaders ({
       'Content-Type': 'application/json',
-      'Authorization': this.restGrupo.getToken()
+      'Authorization': this.getToken()
     })
   let params = JSON.stringify(team);
-  return this.http.post(this.uri+'creategrupo/'+idGrupo,params,{headers:headers}).pipe(map(this.extractData));
+  return this.http.post(this.uri+'creategrupo/'+id, params , {headers:headers}).pipe(map(this.extractData));
   }
 
 

@@ -1,20 +1,20 @@
 <body [@fadeIn]> 
    <div id="title"><h1 class="text-center">Create Gourp</h1></div><br>
    <div class="text-center"><button type="button" class="btn btn-primary col-lg-2 mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Save</button>
-    <button type="button" class="btn btn-secondary col-lg-2 mx-2"  data-bs-toggle="modal" data-bs-target="#exampleModalPart">Partidos</button> 
+    <button type="button" class="btn btn-warning col-lg-2 mx-2"  data-bs-toggle="modal" data-bs-target="#exampleModalPart">Partidos</button> 
     <button type="button" class="btn btn-success col-lg-2 mx-2" > List Partidos</button> 
-
+    <button type="button" class="btn btn-info col-lg-2 mx-2" routerLink="/listEquipo" > Groups Created</button> 
     </div>
    <hr>
 
-<div >
-    <div class="card" style="width: 18rem;">
+
+    <div class="card" style="width: 18rem;" *ngFor=" let grupo of Grupos">
         <img src="../../../assets/img/group.png" class="card-img-top" alt="" data-bs-toggle="modal" data-bs-target="#exampleModalList">
         <div class="card-body text-center">
           <h5 class="card-title">Datos Group</h5>
           <hr>
-          <p class="card-text">Name</p>
-          <p class="card-text">Director Tecnico</p>
+          <p class="card-text">{{name}}</p>
+          <p class="card-text">{{Directors}}</p>
           <button type="button" class="btn btn-success  mx-4"  data-bs-toggle="modal" data-bs-target="#exampleModalUpdate">
             Update
           </button>
@@ -23,7 +23,7 @@
           </button>
         </div>
       </div>
-</div>
+
 
 <!-- Modal Save-->
 
@@ -35,7 +35,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form class="form-signin" (ngSubmit)="onSubmit()" #saveGroup="ngForm" >
+            <form class="form-signin" (ngSubmit)="onSubmit(saveGroup)" #saveGroup="ngForm" >
                 <img  class="mb-4" width="75" height="75" src="../../../assets/img/united.png" alt="register">
                 <h1 class="h3 mb-3 font-weight-normal">Create Group</h1>
                 <div class="form-group">
@@ -182,6 +182,5 @@
     </div>
   </div>
 </div>
-
 
 </body>

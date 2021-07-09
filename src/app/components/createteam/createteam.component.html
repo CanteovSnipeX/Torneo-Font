@@ -18,35 +18,29 @@
               <h5 class="modal-title" id="exampleModalLabel"></h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form class="form-signin">
+            <div class="modal-body  text-center">
+                <form class="form-signin" (onSubmit)="onSubmit(saveTeam)" #saveTeam="ngForm">
                     <img  class="mb-4" width="75" height="75" src="../../../assets/img/colaboracion.png" alt="register">
                         <h1 class="h3 mb-3 font-weight-normal" >Create Team</h1>
                         <div class="form-group">
-                          <label for="selectTorneo" class="form-label">Torneo</label>
-                          <select name="torneos" id="selectTorneo" class="form-control form-select">
-                            <option></option>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                          <label for="selectTorneo" class="form-label">Grupo</label>
-                          <select name="torneos" id="selectTorneo" class="form-control form-select">
-                            <option></option>
+                          <label for="selectGrupo" class="form-label">Grupo</label>
+                          <select [(ngModel)]="grupoId" name="grupo" id="selectGrupo" class="form-control form-select">
+                            <option  *ngFor="let grupo of Grupos" [value]="grupo._id">{{grupo.name}}</option>
                           </select>
                         </div>
                             <div class="form-group">
-                                <label for="" class="form-label"> Nombre del Equipo</label>
-                                <input class="form-control" type="text">
+                                <label for="nameTeam" class="form-label"> Nombre del Equipo</label>
+                                <input [(ngModel)]="team.name"  class="form-control" type="text" id="nameTeam" name="Name" placeholder="Name Team" required>
                             </div>
                             <div class="form-group">
-                                <label for="" class="form-label">No.Intergrantes</label>
-                                <input  class="form-control" type="text">
-                            </div>
+                                <label for="No" class="form-label">No.Intergrantes</label>
+                                <input [(ngModel)]="team.nintegrantes" class="form-control" name="NumIntegrantes" type="number" id="No" placeholder="No. Integrantes" required>
+                           </div>
                 </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">To create</button>
+              <button type="button" class="btn btn-primary"  [disabled]="!saveTeam.form.valid" >To create</button>
             </div>
           </div>
         </div>
