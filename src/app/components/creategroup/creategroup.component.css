@@ -48,3 +48,15 @@ button:hover{
     transition: all 1s;
     background-color: #B3B6B7;
 }
+
+#cards{
+    margin: 1rem;
+}
+
+.myClass{
+    margin: 1.25rem;
+    display: inline-block;
+    background-color: white;
+    color: black;
+
+}

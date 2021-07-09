@@ -11,10 +11,28 @@ export class RestGroupService {
 
   public token;
   public uri;
+  public grupo;
 
   private extractData(res:Response) {
     let body = res;
     return body || [] || {}
+  }
+
+
+
+  constructor(private http: HttpClient, private restTonero:RestTorneoService ) {
+    this.uri = CONNECTION.URI;
+   }
+
+   
+  getGrupo(){
+    let grupo = JSON.parse(localStorage.getItem('grupo'));
+    if(grupo != undefined || grupo != null){
+      this.grupo = grupo
+    }else{
+      this.grupo = null;
+    }
+    return this.grupo;
   }
 
 
@@ -25,9 +43,6 @@ export class RestGroupService {
     return token;
   }
 
-  constructor(private http: HttpClient, private restTonero:RestTorneoService ) {
-    this.uri = CONNECTION.URI;
-   }
 
    saveGroup(idTorneo, grupo){
     let headers = new HttpHeaders ({

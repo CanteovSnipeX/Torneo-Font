@@ -7,24 +7,6 @@
     </div>
    <hr>
 
-
-    <div class="card" style="width: 18rem;" *ngFor=" let grupo of grupos">
-        <img src="../../../assets/img/group.png" class="card-img-top" alt="" data-bs-toggle="modal" data-bs-target="#exampleModalList">
-        <div class="card-body text-center">
-          <h5 class="card-title">Datos Group</h5>
-          <hr>
-          <p class="card-text">{{grupo.name}}</p>
-          <p class="card-text">{{grupo.Directors}}</p>
-          <button type="button" class="btn btn-success  mx-4"  data-bs-toggle="modal" data-bs-target="#exampleModalUpdate">
-            Update
-          </button>
-          <button type="button" class="btn btn-danger  mx-4" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
-            Delete
-          </button>
-        </div>
-      </div>
-
-
 <!-- Modal Save-->
 
 <div class="modal fade text-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -105,8 +87,7 @@
             <img class="mb-4" width="75" height="75" src="../../../assets/img/borrar.png" alt="Delete">
             <h1 class="h3 mb-3 font-weight-normal">This action is irreversible!</h1>
               <form >
-                  <label for="inputName"></label>
-                  <input class="form-control" type="password" id="inputName" placeholder="Password"> 
+                  
               </form>
         </div>
         <div class="modal-footer">
@@ -161,16 +142,16 @@
           <select class="form-select" aria-label="Default select example">
             <option selected>Open this select menu</option>
           </select>
-          <label for="" class="form-label"> Name</label>
-          <input class="form-control" type="text" name="" id="">
+          <label for="inputName" class="form-label"> Name</label>
+          <input class="form-control" type="text" name="name" id="inputName">
           <div class="row">
             <div class="form-group  col-md-6">
-              <label for="" class="form-label" >Team 1</label>
-              <input class="form-control" type="text" name="" id="">
+              <label for="inputTeamOne" class="form-label" >Team One</label>
+              <input class="form-control" type="text" name="teamOne" id="inputTeamOne">
             </div>
             <div class="form-group  col-md-6">
-              <label for="" class="form-label">Team 2</label>
-              <input class="form-control" type="text" name="" id="">
+              <label for="inputTeamTwo" class="form-label">Team Two</label>
+              <input class="form-control" type="text" name="teamTwo" id="inputTeamTwo">
             </div>
           </div>
         </form>
@@ -183,4 +164,22 @@
   </div>
 </div>
 
+<div id="cards">
+<div class="card myClass" style="width: 18rem;" *ngFor="let grupo of grupos" >
+  <img src="../../../assets/img/group.png" class="card-img-top" alt="" data-bs-toggle="modal" data-bs-target="#exampleModalList">
+  <div class="card-body text-center">
+    <h5 class="card-title">Datos Group</h5>
+    <hr>
+    <p class="card-text">{{grupo.name}}</p>
+    <p class="card-text">{{grupo.Directors}}</p>
+
+    <button type="button" class="btn btn-success  mx-4"  data-bs-toggle="modal" data-bs-target="#exampleModalUpdate">
+      Update
+    </button>
+    <button type="button" class="btn btn-danger  mx-4" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
+      Delete
+    </button>
+  </div>
+</div>
+</div>
 </body>

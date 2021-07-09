@@ -3,11 +3,11 @@
     <div id="title" class="text-center">
         <h1 class="text-left">Crear Torneo</h1>
     </div>
-    <div id="connt" class="text-center">
-        <button type="button" class="btn btn-primary col-lg-2 mx-2 " data-bs-toggle="modal" data-bs-target="#exampleModalAgregar">
+    <div class="text-center">
+        <button type="button" class="btn btn-primary col-lg-2 mx-4 " data-bs-toggle="modal" data-bs-target="#exampleModalAgregar">
             Save
           </button>
-          <button type="submit" class="btn btn-secondary col-lg-2 mx-2"  *ngIf="token != null &&user.role == 'ROLE_ADMIN'" routerLink="/listTorneo">
+          <button type="submit" class="btn btn-secondary col-lg-2 mx-4"  *ngIf="token != null &&user.role == 'ROLE_ADMIN'" routerLink="/listTorneo">
             Toneos Creados
           </button>
           
@@ -121,10 +121,10 @@
               <p class="card-text text-center">{{torneo.typetournamen}}</p>
               <p class="card-text text-center">{{torneo.awards}}</p>
               <hr>
-            <button type="button" class="btn btn-success mx-2" data-bs-toggle="modal" data-bs-target="#exampleModalActualizar" (click)="obtenerData(torneo)">
+            <button type="button" class="btn btn-success mx-3" data-bs-toggle="modal" data-bs-target="#exampleModalActualizar" (click)="obtenerData(torneo)">
                 Update
               </button>
-             <button type="button" class="btn btn-danger mx-2" data-bs-toggle="modal" data-bs-target="#exampleModalEliminar" (click)="obtenerData(torneo)">
+             <button type="button" class="btn btn-danger mx-4" data-bs-toggle="modal" data-bs-target="#exampleModalEliminar" (click)="obtenerData(torneo)">
                 Delete
               </button>
             </div>

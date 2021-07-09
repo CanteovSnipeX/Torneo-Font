@@ -34,6 +34,8 @@ export class CreategroupComponent implements OnInit {
     })
     this.user = this.restUser.getUser();
     this.token = this.restUser.getToken();
+    this.torneo = this.restGroup.getGrupo();
+
   } 
 
   onSubmit(save){
@@ -42,7 +44,7 @@ export class CreategroupComponent implements OnInit {
       save.reset();
       this.grupo = res.GrupoPush;
       localStorage.setItem('grupo', JSON.stringify(this.grupo));
-      this.torneo = this.restTorneo.getTorneos();
+      this.torneo = this.restGroup.getGrupo();
       this.grupos = this.torneo.grupo;
     }else{
       alert(res.message);
