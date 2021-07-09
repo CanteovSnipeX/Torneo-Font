@@ -8,13 +8,13 @@
    <hr>
 
 
-    <div class="card" style="width: 18rem;" *ngFor=" let grupo of Grupos">
+    <div class="card" style="width: 18rem;" *ngFor=" let grupo of grupos">
         <img src="../../../assets/img/group.png" class="card-img-top" alt="" data-bs-toggle="modal" data-bs-target="#exampleModalList">
         <div class="card-body text-center">
           <h5 class="card-title">Datos Group</h5>
           <hr>
-          <p class="card-text">{{name}}</p>
-          <p class="card-text">{{Directors}}</p>
+          <p class="card-text">{{grupo.name}}</p>
+          <p class="card-text">{{grupo.Directors}}</p>
           <button type="button" class="btn btn-success  mx-4"  data-bs-toggle="modal" data-bs-target="#exampleModalUpdate">
             Update
           </button>

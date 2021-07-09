@@ -19,33 +19,34 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body  text-center">
-                <form class="form-signin" (onSubmit)="onSubmit(saveTeam)" #saveTeam="ngForm">
-                    <img  class="mb-4" width="75" height="75" src="../../../assets/img/colaboracion.png" alt="register">
-                        <h1 class="h3 mb-3 font-weight-normal" >Create Team</h1>
-                        <div class="form-group">
-                          <label for="selectGrupo" class="form-label">Grupo</label>
-                          <select [(ngModel)]="grupoId" name="grupo" id="selectGrupo" class="form-control form-select">
-                            <option  *ngFor="let grupo of Grupos" [value]="grupo._id">{{grupo.name}}</option>
-                          </select>
-                        </div>
-                            <div class="form-group">
-                                <label for="nameTeam" class="form-label"> Nombre del Equipo</label>
-                                <input [(ngModel)]="team.name"  class="form-control" type="text" id="nameTeam" name="Name" placeholder="Name Team" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="No" class="form-label">No.Intergrantes</label>
-                                <input [(ngModel)]="team.nintegrantes" class="form-control" name="NumIntegrantes" type="number" id="No" placeholder="No. Integrantes" required>
-                           </div>
-                </form>
+              <form class="form-signin" (ngSubmit)="onSubmit()" #saveTeam="ngForm">
+                <img  class="mb-4" width="75" height="75" src="../../../assets/img/colaboracion.png" alt="register">
+                <h1 class="h3 mb-3 font-weight-normal" >Create Team</h1>
+                <div class="form-group">
+                  <select [(ngModel)]="grupoId" name="grupo" id="selectGrupo" class="form-control form-select">
+                    <option *ngFor="let grupo of Grupos" [value]="grupo._id">{{grupo.name}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="inputNames" class="form-label">Name</label>
+                  <input [(ngModel)]="equipo.name" class="form-control" type="text" id="inputNames" name="name" placeholder="Name" required >
+              </div>
+              <div class="form-group">
+                <label for="inputDirectors" class="form-label">No.Integrantes</label>
+                <input [(ngModel)]="equipo.nintegrantes" class="form-control" type="text" id="inputDirectors" name="nintegrantes" placeholder="No Integrantes" required>
+            </div>
+              </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary"  [disabled]="!saveTeam.form.valid" >To create</button>
+              <button type="submit" class="btn btn-primary mx-4"  [disabled]="!saveTeam.form.valid" >To Create</button>
             </div>
           </div>
         </div>
       </div>
 
+
+          
     <!--Modal ELiminar-->
 
     <div class="modal fade" id="exampleModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

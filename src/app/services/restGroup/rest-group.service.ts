@@ -35,7 +35,7 @@ export class RestGroupService {
       'Authorization': this.restTonero.getToken()
     })
     let params = JSON.stringify(grupo);
-    return this.http.post(this.uri+'createLiga/'+idTorneo, params , {headers:headers}).pipe(map(this.extractData));
+    return this.http.post(this.uri+'createGrupo/'+idTorneo, params , {headers:headers}).pipe(map(this.extractData));
    }
 
 
@@ -63,10 +63,6 @@ export class RestGroupService {
       "Authorization": this.getToken()
     });
   
-    return this.http.get(this.uri+'getLigas/', {headers: headers}).pipe(map(this.extractData))
-   }
-
-
-
-  
+    return this.http.get(this.uri+'getGrupo/',{headers: headers}).pipe(map(this.extractData))
+   }  
 }

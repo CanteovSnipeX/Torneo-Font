@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { fadeIn } from 'src/app/transitions/transitions';
-import { Team } from 'src/app/models/equipo';
+import { Equipo } from 'src/app/models/equipo';
 import { RestTeamService } from 'src/app/services/restTeam/rest-team.service';
 import { RestGroupService } from 'src/app/services/restGroup/rest-group.service';
-
+import { RestUserService } from 'src/app/services/restUser/rest-user.service';
 
 @Component({
   selector: 'app-createteam',
@@ -14,46 +14,36 @@ import { RestGroupService } from 'src/app/services/restGroup/rest-group.service'
 export class CreateteamComponent implements OnInit {
 
   Grupos:[] = [];
-  Team:[];
-  team :Team;
+  Equipo:[];
+  equipo:Equipo;
   public grupo;
   public token;
-  groupSelected:Team;
+  public user;
   grupoId:string;
 
 
-  constructor( private restTeam:RestTeamService, private restGrupo:RestGroupService) {
-    this.team = new Team('','',null,'');
+  constructor( private restTeam:RestTeamService, private restGrupo:RestGroupService, private restUser:RestUserService) {
+    this.equipo = new Equipo('','','','');
    }
 
   ngOnInit(): void {
     this.restGrupo.getGroup().subscribe((res:any)=>{
-      this.Grupos = res.ligas;
-      console.log(this.Grupos);
+      this.Grupos = res.grupos;
     })
-
+    this.user = this.restUser.getUser();
+    this.token = this.restUser.getToken();
   }
 
-  onSubmit(save){
-    console.log(this.grupoId);
-    this.restTeam.saveTeam(this.grupoId,this.team).subscribe((res:any)=>{
+  onSubmit(){
+    this.restTeam.saveTeam(this.grupoId, this.grupo).subscribe((res:any)=>{
       if(res.teamPush){
         alert(res.message);
       }else{
         alert(res.message);
       }
-    },
-    error => alert(error.error.message)
-    )
-
+    })
   }
 
 
-  updateTeam(){
-
-  }
-
-  deleteTeam(){
-
-  }
+ 
 }

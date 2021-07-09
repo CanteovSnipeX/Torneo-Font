@@ -36,6 +36,7 @@ import { RestGroupService } from './services/restGroup/rest-group.service';
 import { CreatepartidosComponent } from './components/createpartidos/createpartidos.component';
 import { ListpastidosComponent } from './components/listpastidos/listpastidos.component';
 import { ListequiposComponent } from './components/listequipos/listequipos.component';
+import { RestTeamService } from './services/restTeam/rest-team.service';
 
 
 
@@ -73,7 +74,7 @@ import { ListequiposComponent } from './components/listequipos/listequipos.compo
     HttpClientModule,
 
   ],
-  providers: [ RestUserService,RestTorneoService,RestGroupService ],
+  providers: [ RestUserService,RestTorneoService,RestGroupService,RestTeamService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

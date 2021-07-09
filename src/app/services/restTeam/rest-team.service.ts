@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { CONNECTION } from '../global';
 import { map } from 'rxjs/operators';
-import { RestGroupService } from '../restGroup/rest-group.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +20,6 @@ export class RestTeamService {
   getToken(){
     let token = localStorage.getItem('token');
     this.token = (token!= undefined || token != null) ? token : null;
-    
     return token;
   }
 
@@ -29,13 +27,21 @@ export class RestTeamService {
     this.uri = CONNECTION.URI;
   }
 
-  saveTeam(id, team){
+  saveTeam(idGrupo, datos){
     let headers = new HttpHeaders ({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
     })
-  let params = JSON.stringify(team);
-  return this.http.post(this.uri+'creategrupo/'+id, params , {headers:headers}).pipe(map(this.extractData));
+  let params = JSON.stringify(datos);
+  return this.http.post(this.uri+'setTeam/'+ idGrupo, params , {headers:headers}).pipe(map(this.extractData));
+  }
+
+  getTeam(){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      "Authorization": this.getToken()
+    });
+    return this.http.get(this.uri+'getTeams/',{headers:headers}).pipe(map(this.extractData));
   }
 
 

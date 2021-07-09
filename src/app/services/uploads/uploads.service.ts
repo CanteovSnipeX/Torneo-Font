@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { CONNECTION } from '../global';
-import { map } from 'rxjs/operators';
 
 
 @Injectable({

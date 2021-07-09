@@ -4,6 +4,7 @@ import { Grupo } from 'src/app/models/grupo';
 import { RestTorneoService } from 'src/app/services/restTorneo/rest-torneo.service';
 import { fadeIn } from 'src/app/transitions/transitions';
 import { Router } from '@angular/router';
+import { RestUserService } from 'src/app/services/restUser/rest-user.service';
 
 @Component({
   selector: 'app-creategroup',
@@ -14,16 +15,16 @@ import { Router } from '@angular/router';
 export class CreategroupComponent implements OnInit {
 
   Torneos: [] = [];
-  Grupos:[];
+  grupos:[];
   grupo:Grupo;
-  public token;
   public torneo;
-  group;
+  public token;
+  public user;
   groupSelected:Grupo;
   torneoid:string;
 
-  constructor( private restTorneo:RestTorneoService, private restGroup:RestGroupService, private router:Router) {
-  this.grupo = new Grupo('','','','',[]);
+  constructor( private restTorneo:RestTorneoService, private restGroup:RestGroupService, private restUser:RestUserService) {
+  this.grupo = new Grupo('','','','',[],[]);
   }
 
   ngOnInit(): void {
@@ -31,20 +32,18 @@ export class CreategroupComponent implements OnInit {
      this.Torneos = res.torneo;
      console.log(this.Torneos);
     })
-    console.log(this.Grupos);
-
-
+    this.user = this.restUser.getUser();
+    this.token = this.restUser.getToken();
   } 
 
   onSubmit(save){
-    console.log(this.torneoid);
-  this.restGroup.saveGroup(  this.torneoid, this.grupo).subscribe((res:any)=>{
-    if(res.ligaPush){
+  this.restGroup.saveGroup(this.torneoid, this.grupo).subscribe((res:any)=>{
+    if(res.GrupoPush){
       save.reset();
-      this.grupo = res.ligaPush;
-      localStorage.setItem('grupo', JSON.stringify(this.Grupos));
-      this.torneo = this.restGroup.getGroup();
-      this.Grupos = this.torneo.group
+      this.grupo = res.GrupoPush;
+      localStorage.setItem('grupo', JSON.stringify(this.grupo));
+      this.torneo = this.restTorneo.getTorneos();
+      this.grupos = this.torneo.grupo;
     }else{
       alert(res.message);
     }
@@ -53,29 +52,7 @@ export class CreategroupComponent implements OnInit {
   }
 
 
-  updateGrupo(){
-    this.restGroup.updateGroup(this.grupo , this.groupSelected).subscribe((res:any)=>{
-      if (res.ligaUpdated){
-        localStorage.setItem('torneo', JSON.stringify(this.torneo));
-      }else{
-        alert(res.message);
-        this.torneo = this.restTorneo.getTorneo();
-        this.Grupos = this.torneo.grupos;
-      }
-    },
-  error => alert(error.error.message));
-  }
 
-  deleteGrupo(){
-    this.restGroup.removeGroup(this.torneo._id, this.groupSelected._id).subscribe((res:any)=>{
-      if(res.contactRemoved){
-        alert(res.message)
-      }else{
-        alert(res.message)
-      }
-    },
-    error => alert(error.error.message));
-  }
 
 
 }

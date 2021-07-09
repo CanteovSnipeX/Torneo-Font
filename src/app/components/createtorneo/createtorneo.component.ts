@@ -27,7 +27,6 @@ export class CreatetorneoComponent implements OnInit {
     this.user = this.restUser.getUser();
     this.token = this.restUser.getToken();
     this.torneos = this.user.torneo;
-    console.log(this.torneos);
   }
 
 
