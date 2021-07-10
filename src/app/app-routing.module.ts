@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { CreategroupComponent } from './components/creategroup/creategroup.component';
+import { CreatepartidosComponent } from './components/createpartidos/createpartidos.component';
 import { CreateteamComponent } from './components/createteam/createteam.component';
 import { CreatetorneoComponent } from './components/createtorneo/createtorneo.component';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
@@ -9,7 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ListEquipoComponent } from './components/list-equipo/list-equipo.component';
 import { ListequiposComponent } from './components/listequipos/listequipos.component';
 import { ListorneoComponent } from './components/listorneo/listorneo.component';
-import { ListpastidosComponent } from './components/listpastidos/listpastidos.component';
+import { ListpartidosComponent } from './components/listpartidos/listpartidos.component';
 import { ListuserComponent } from './components/listuser/listuser.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -42,7 +43,8 @@ const routes: Routes = [
   {path: 'listEquipo',canActivate:[AdminGuard] ,component:ListEquipoComponent},
   {path: 'graphics', component:BarChartComponent},
   {path: 'listTeam', canActivate:[AdminGuard],component:ListequiposComponent},
-  {path: 'listPart', component:ListpastidosComponent},
+  {path: 'listPart', canActivate:[AdminGuard], component:ListpartidosComponent},
+  {path: 'createPartidos',component:CreatepartidosComponent},
   {path: '**', component:NotFoundComponent},
 ];
 

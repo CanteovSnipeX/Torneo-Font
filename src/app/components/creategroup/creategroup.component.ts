@@ -34,8 +34,6 @@ export class CreategroupComponent implements OnInit {
     })
     this.user = this.restUser.getUser();
     this.token = this.restUser.getToken();
-    this.torneo = this.restGroup.getGrupo();
-
   } 
 
   onSubmit(save){
@@ -53,6 +51,7 @@ export class CreategroupComponent implements OnInit {
   error => alert(error.error.message))
   }
 
+  
 
 
 

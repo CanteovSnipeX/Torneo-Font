@@ -1,9 +1,7 @@
 <body [@fadeIn]> 
    <div id="title"><h1 class="text-center">Create Gourp</h1></div><br>
    <div class="text-center"><button type="button" class="btn btn-primary col-lg-2 mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Save</button>
-    <button type="button" class="btn btn-warning col-lg-2 mx-2"  data-bs-toggle="modal" data-bs-target="#exampleModalPart">Partidos</button> 
-    <button type="button" class="btn btn-success col-lg-2 mx-2" > List Partidos</button> 
-    <button type="button" class="btn btn-info col-lg-2 mx-2" routerLink="/listEquipo" > Groups Created</button> 
+    <button type="button" class="btn btn-success col-lg-2 mx-2" routerLink="/listEquipo"  *ngIf="token != null &&user.role == 'ROLE_ADMIN'" > Groups Created</button> 
     </div>
    <hr>
 
@@ -126,43 +124,7 @@
   </div>
 
 
-  <!-- Modal Partidos-->
-<div class="modal fade" id="exampleModalPart" tabindex="-1" aria-labelledby="exampleModalLabelPart" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" class="text-center">
-          <img class="text-center" src="../../../assets/img/Partidos.png" width="80" height="80" alt="">
-          <h3 class="text-center">Set Partidos</h3>
-          <label for="" class="form-label">Jornadas</label>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Open this select menu</option>
-          </select>
-          <label for="inputName" class="form-label"> Name</label>
-          <input class="form-control" type="text" name="name" id="inputName">
-          <div class="row">
-            <div class="form-group  col-md-6">
-              <label for="inputTeamOne" class="form-label" >Team One</label>
-              <input class="form-control" type="text" name="teamOne" id="inputTeamOne">
-            </div>
-            <div class="form-group  col-md-6">
-              <label for="inputTeamTwo" class="form-label">Team Two</label>
-              <input class="form-control" type="text" name="teamTwo" id="inputTeamTwo">
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <div id="cards">
 <div class="card myClass" style="width: 18rem;" *ngFor="let grupo of grupos" >
