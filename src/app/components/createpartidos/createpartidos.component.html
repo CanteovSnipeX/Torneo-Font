@@ -1,4 +1,4 @@
-<body>
+<body [@fadeIn]>
     <h1 class="text-center">
         Create Partidos
     </h1>
@@ -35,40 +35,50 @@
         </tbody>
       </table>
 
-
 <!-- Modal -->
+
+
 <div class="modal fade" id="exampleModalPart" tabindex="-1" aria-labelledby="exampleModalLabelPart" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <form action="" class="text-center">
+      <div class="modal-body"  >
+        <form class="text-center" (ngSubmit)="onSubmit()" #saveMatch="ngForm" >
           <img class="text-center" src="../../../assets/img/Partidos.png" width="80" height="80" alt="">
           <h3 class="text-center">Set Partidos</h3>
-          <label for="" class="form-label">Jornadas</label>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Open this select menu</option>
+          <div class="form-group">
+            <label for="selectGrupo" class="form-label">Grupo</label>
+            <select [(ngModel)]="grupoid" name="grupo" id="selectGrupo" class="form-control form-select">
+              <option *ngFor="let grupo of Grupos" [value]="grupo._id">{{grupo.name}}</option>
+            </select>
+          </div>
+          <label for="selecJornada" class="form-label">Jornadas</label>
+          <select class="form-select" aria-label="Default select example" id="selecJornada" name="jornada">
+            <option *ngFor="let option of optionsJosnada" [value]="option" selected>{{option}}</option>
           </select>
           <label for="inputName" class="form-label"> Name</label>
-          <input class="form-control" type="text" name="name" id="inputName">
+          <input [(ngModel)]="partido.name" class="form-control" type="text" name="name" id="inputName" required>
           <div class="row">
             <div class="form-group  col-md-6">
               <label for="inputTeamOne" class="form-label" >Team One</label>
-              <input class="form-control" type="text" name="teamOne" id="inputTeamOne">
+              <select [(ngModel)]="teamOne" name="teamOne" id="selectGrupo" class="form-control form-select">
+                <option *ngFor="let team of Teams" [value]="team._id">{{team.name}}</option>
+              </select>
             </div>
             <div class="form-group  col-md-6">
               <label for="inputTeamTwo" class="form-label">Team Two</label>
-              <input class="form-control" type="text" name="teamTwo" id="inputTeamTwo">
+              <select [(ngModel)]="teamTwo" name="teamTwo" id="inputTeamTwo" class="form-control form-select">
+                <option *ngFor="let team of Teams" [value]="team._id">{{team.name}}</option>
+              </select>
             </div>
           </div>
+          <br>
+          <button type="button" class="btn btn-secondary mx-2" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary mx-2 "  [disabled]="!saveMatch.form.valid" >Save changes</button>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

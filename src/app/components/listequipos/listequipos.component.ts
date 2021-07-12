@@ -9,7 +9,7 @@ import { CONNECTION } from 'src/app/services/global';
 })
 export class ListequiposComponent implements OnInit {
 
-  Team:[];
+  Teams:[];
   uri;
 
   constructor(private restTeam:RestTeamService) { }
@@ -20,10 +20,10 @@ export class ListequiposComponent implements OnInit {
   }
 
   listTeams(){
-    this.restTeam.getTeam().subscribe((res:any)=>{
+    this.restTeam.getTeams().subscribe((res:any)=>{
       if(res.teams){
-        this.Team = res.teams;
-        console.log('Equipos Cargados');
+        this.Teams = res.teams;
+        console.log(this.Teams);
       }else{
         alert(res.message)
       }

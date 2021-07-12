@@ -3,7 +3,6 @@ import { RestGroupService } from 'src/app/services/restGroup/rest-group.service'
 import { Grupo } from 'src/app/models/grupo';
 import { RestTorneoService } from 'src/app/services/restTorneo/rest-torneo.service';
 import { fadeIn } from 'src/app/transitions/transitions';
-import { Router } from '@angular/router';
 import { RestUserService } from 'src/app/services/restUser/rest-user.service';
 
 @Component({
