@@ -45,11 +45,15 @@ export class RestPartidosService {
       'Authorization': this.getToken()
     })
     let params = JSON.stringify(partido);
-    return this.http.post(this.uri+'createPatido/'+idGrupo,params,{headers:headers}).pipe(map(this.extractData));
+    return this.http.post(this.uri+'createPartido/'+idGrupo,params,{headers:headers}).pipe(map(this.extractData));
   }
 
   getPartidos(){
-    
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      "Authorization": this.getToken()
+    });
+    return this.http.get(this.uri+'getPartidos/',{headers:headers}).pipe((map(this.extractData)));
   }
 
 

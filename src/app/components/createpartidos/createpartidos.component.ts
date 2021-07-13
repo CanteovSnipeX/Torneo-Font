@@ -19,7 +19,6 @@ export class CreatepartidosComponent implements OnInit {
 
   Grupos:[];
   partidos:[];
-  Teams:[] = [];
   partido:Partido;
   public grupo;
   public token;
@@ -27,12 +26,11 @@ export class CreatepartidosComponent implements OnInit {
   public optionsJosnada = ['Jornada 1','Jornada 2','Jornada 3','Jornada 4','Jornada 5'];
   partidoSelected:Partido;
   grupoid:string;
-  teamOne:string;
-  teamTwo:string;
+
 
 
   constructor(private  restGrupo:RestGroupService, private restMatch:RestPartidosService, private restUser:RestUserService, private restTeam:RestTeamService) { 
-    this.partido = new Partido('','','',[]);
+    this.partido = new Partido('','','','','');
   }
 
   ngOnInit(): void {
@@ -41,15 +39,26 @@ export class CreatepartidosComponent implements OnInit {
       console.log(this.Grupos);
     })
 
-    this.restTeam.getTeams().subscribe((res:any)=>{
-      this.Teams = res.teams;
-      console.log(this.Teams);
-    })   
+    this.restUser.getUsers().subscribe((res:any)=>{
+      this.user = res.users;
+    })
   }
 
-  onSubmit(){
-    console.log(this.partido);
-  }
 
+
+  onSubmit(save){
+      this.restMatch.savePartido(this.grupoid, this.partido).subscribe((res:any)=>{
+        if(res.Push){
+          save.reset();
+          this.partido = res.Push;
+          localStorage.setItem('partido',JSON.stringify(this.partido));
+          this.grupo = this.restMatch.getPartido();
+          this.partidos =  this.grupo.partido;
+        }else{
+          alert(res.message)
+        }
+      },
+      error=> alert(error.error.message))
+  }
 
 }

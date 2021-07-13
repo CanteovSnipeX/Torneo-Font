@@ -3,6 +3,7 @@ export class Partido {
         public _id: string,
         public jornada: string,
         public name: string,
-        public team: [],
+        public teamOne:string,
+        public teamTwo:string
     ){}
 }

@@ -1,9 +1,39 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { CONNECTION } from '../global';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestResultService {
 
-  constructor() { }
+  public token;
+  public uri;
+  public result;
+
+  private extractData(res:Response) {
+    let body = res;
+    return body || [] || {}
+  }
+
+  constructor(private http:HttpClient) {
+    this.uri = CONNECTION.URI;
+   }
+
+   getToken(){
+    let token = localStorage.getItem('token');
+    this.token = (token!= undefined || token != null) ? token : null;
+    return token;
+  }
+
+  setResult(idTeam, result){
+    let headers = new HttpHeaders ({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    })
+    let params = JSON.stringify(result);
+    return this.http.put(this.uri+'crearResult/'+idTeam,params,{headers:headers}).pipe(map(this.extractData))
+  }
+
 }

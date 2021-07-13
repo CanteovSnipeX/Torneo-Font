@@ -1,1 +1,30 @@
-<p>listpartidos works!</p>
+<body class="text-center">
+    <div id="title">
+        <h1> Partidos En Curso </h1>
+    </div>
+    <br>
+    <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Jornada</th>
+            <th scope="col">Name</th>
+            <th scope="col">teamOne</th>
+            <th scope="col">teamTwo</th>
+          </tr>
+        </thead>
+        <tbody  *ngFor="let partido of Partidos,  let i = index" > 
+          <tr>
+            <th>{{i}}</th>
+            <td>{{partido.jornada}}</td>
+            <td>{{partido.name}}</td>
+            <td>{{partido.teamOne}}</td>
+            <td>{{partido.teamTwo}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+
+</body>

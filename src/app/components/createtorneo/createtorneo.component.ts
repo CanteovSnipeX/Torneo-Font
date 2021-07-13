@@ -73,11 +73,9 @@ export class CreatetorneoComponent implements OnInit {
         this.torneos = this.user.torneo;
       }else{
         alert(res.message);
-        
       }
     },
     error => alert(error.error.message))
   }
-  
 
 }

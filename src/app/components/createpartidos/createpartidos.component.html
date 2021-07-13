@@ -10,7 +10,7 @@
 </button>
     </div>
     <br>
-    <table class="table">
+    <table class="table" >
         <thead class="table-dark">
           <tr>
             <th scope="col">No.</th>
@@ -22,14 +22,15 @@
             <th scope="col"></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody  *ngFor="let partido of partidos, let i = index " >
           <tr>
-            <td>1</td>
-            <td>Master Sports</td>
-            <td>Grupo A </td>
-            <td>Gran final</td>
-            <td>Navi</td>
-            <td>FANATIC</td>
+            <td>{{i}}</td>
+            <td></td>
+            <td></td>
+            <td>{{partido.name}}</td>
+            <td>{{partido.teamOne}}</td>
+            <td>{{partido.teamTwo}}</td>
+            <td></td>
             <td><button class="btn-danger">Finalizado</button></td>
           </tr>
         </tbody>
@@ -46,7 +47,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body"  >
-        <form class="text-center" (ngSubmit)="onSubmit()" #saveMatch="ngForm" >
+        <form class="text-center" (ngSubmit)="onSubmit(saveMatch)" #saveMatch="ngForm" >
           <img class="text-center" src="../../../assets/img/Partidos.png" width="80" height="80" alt="">
           <h3 class="text-center">Set Partidos</h3>
           <div class="form-group">
@@ -56,7 +57,7 @@
             </select>
           </div>
           <label for="selecJornada" class="form-label">Jornadas</label>
-          <select class="form-select" aria-label="Default select example" id="selecJornada" name="jornada">
+          <select [(ngModel)]="partido.jornada" class="form-select" aria-label="Default select example" id="selecJornada" name="jornada">
             <option *ngFor="let option of optionsJosnada" [value]="option" selected>{{option}}</option>
           </select>
           <label for="inputName" class="form-label"> Name</label>
@@ -64,20 +65,16 @@
           <div class="row">
             <div class="form-group  col-md-6">
               <label for="inputTeamOne" class="form-label" >Team One</label>
-              <select [(ngModel)]="teamOne" name="teamOne" id="selectGrupo" class="form-control form-select">
-                <option *ngFor="let team of Teams" [value]="team._id">{{team.name}}</option>
-              </select>
+             <input [(ngModel)]="partido.teamOne" class="form-control" type="text" name="teamOne" id="inputTeamOne" required>
             </div>
             <div class="form-group  col-md-6">
               <label for="inputTeamTwo" class="form-label">Team Two</label>
-              <select [(ngModel)]="teamTwo" name="teamTwo" id="inputTeamTwo" class="form-control form-select">
-                <option *ngFor="let team of Teams" [value]="team._id">{{team.name}}</option>
-              </select>
+              <input [(ngModel)]="partido.teamTwo" class="form-control" type="text" name="teamTwo" id="inputTeamTwo" required>
             </div>
           </div>
           <br>
           <button type="button" class="btn btn-secondary mx-2" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary mx-2 "  [disabled]="!saveMatch.form.valid" >Save changes</button>
+          <button type="submit" class="btn btn-primary mx-2 "  [disabled]="!saveMatch.form.valid" >Save Match</button>
         </form>
       </div>
     </div>
