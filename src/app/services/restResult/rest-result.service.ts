@@ -27,13 +27,13 @@ export class RestResultService {
     return token;
   }
 
-  setResult(idTeam, result){
+  setResult(idMatch,result){
     let headers = new HttpHeaders ({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
     })
     let params = JSON.stringify(result);
-    return this.http.put(this.uri+'crearResult/'+idTeam,params,{headers:headers}).pipe(map(this.extractData))
+    return this.http.post(this.uri+'crearResult/'+idMatch,params,{headers:headers}).pipe(map(this.extractData))
   }
 
 }

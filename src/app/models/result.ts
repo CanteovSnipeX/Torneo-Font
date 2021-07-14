@@ -1,9 +1,9 @@
 export class Result {
     constructor(
         public _id: string,
-        public  onegoles: string,
-        public  twogoles: string,
-        public  partido: [],
-        public  team: []
+        public  teamOne: string,
+        public  teamTwo: string,
+        public  onegoles: number,
+        public  twogoles: number,
         ){}
 }

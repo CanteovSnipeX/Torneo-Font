@@ -25,10 +25,11 @@ export class CreateteamComponent implements OnInit {
   public filesToUploadTeam:Array<File>;
   teamSelected:Equipo;
   grupoid:string;
+  team;
 
 
   constructor( private uploadTeam:UploadsTeamService , private restTeam:RestTeamService, private restGrupo:RestGroupService, private restUser:RestUserService  ) {
-    this.equipo = new Equipo('','','','');
+    this.equipo = new Equipo('','','',[null],'');
     this.uri = CONNECTION.URI
    }
 
@@ -59,19 +60,12 @@ export class CreateteamComponent implements OnInit {
   }
 
 
-
-
-
-
-
-
-
   uploadImage(){
     this.uploadTeam.fileRequestTeam(this.grupoid, [] ,this.equipo._id, this.filesToUploadTeam, this.token, 'image')
       .then((res:any)=>{
-        if(res.user){
-          this.user.image = res.userImage;
-          localStorage.setItem('user', JSON.stringify(this.user))
+        if(res.team){
+          this.team.image = res.userImage;
+          localStorage.setItem('team', JSON.stringify(this.team))
         }else{
           alert(res.message)
         }
