@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RestGroupService } from 'src/app/services/restGroup/rest-group.service';
-import { RestUserService } from 'src/app/services/restUser/rest-user.service';
 import { RestPartidosService } from 'src/app/services/restPartidos/rest-partidos.service';
+import { RestTorneoService } from 'src/app/services/restTorneo/rest-torneo.service';
+import { RestTeamService } from 'src/app/services/restTeam/rest-team.service';
 import { fadeIn } from 'src/app/transitions/transitions';
 import { Partido  } from 'src/app/models/partido';
-import { RestTeamService } from 'src/app/services/restTeam/rest-team.service'; 
-
+import { Alert } from 'selenium-webdriver';
 
 
 @Component({
@@ -17,48 +16,55 @@ import { RestTeamService } from 'src/app/services/restTeam/rest-team.service';
 export class CreatepartidosComponent implements OnInit {
 
 
-  Grupos:[];
+  torneos:[];
   partidos:[];
+  teams:[];
   partido:Partido;
   public grupo;
+  public torneo;
   public token;
-  public user;
-  public optionsJosnada = ['Jornada 1','Jornada 2','Jornada 3','Jornada 4','Jornada 5'];
+  public optionsJosnada = [];
   partidoSelected:Partido;
-  grupoid:string;
+  torneoId:string;
 
 
 
-  constructor(private  restGrupo:RestGroupService, private restMatch:RestPartidosService, private restUser:RestUserService, private restTeam:RestTeamService) { 
-    this.partido = new Partido('','','','','');
+  constructor( private restMatch:RestPartidosService, private restTeam:RestTeamService, private restTorneo:RestTorneoService) { 
+    this.partido = new Partido('','','',null,'',null);
   }
 
   ngOnInit(): void {
-    this.restGrupo.getGroup().subscribe((res:any)=>{
-      this.Grupos = res.grupos;
-      console.log(this.Grupos);
+    this.restTorneo.getTorneos().subscribe((res:any)=>{
+      this.torneos = res.torneo;
+      console.log(this.torneos);
     })
 
-    this.restUser.getUsers().subscribe((res:any)=>{
-      this.user = res.users;
+    this.restMatch.getPartidos().subscribe((res:any)=>{
+      this.partidos = res.partidos
+      console.log(this.partido);
     })
+  
+  
   }
 
-
-
   onSubmit(save){
-      this.restMatch.savePartido(this.grupoid, this.partido).subscribe((res:any)=>{
+      this.restMatch.savePartido(this.torneoId, this.partido).subscribe((res:any)=>{
         if(res.Push){
           save.reset();
-          this.partido = res.Push;
-          localStorage.setItem('partido',JSON.stringify(this.partido));
-          this.grupo = this.restMatch.getPartido();
-          this.partidos =  this.grupo.partido;
+          this.torneo = res.Push;
+          localStorage.setItem('partido',JSON.stringify(this.torneo));
+           this.torneo = this.restTorneo.getTorneos ();
+           this.partidos = this.torneo.partido;
         }else{
           alert(res.message)
         }
       },
-      error=> alert(error.error.message))
+      error=>alert(error.error.message))
   }
+
+  sendTeamInfo(partido:Partido){
+    localStorage.setItem('partido',JSON.stringify(this.partido)!);
+  }
+
 
 }

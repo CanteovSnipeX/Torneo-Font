@@ -16,9 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 
 //Services
 import { CreatetorneoComponent } from './components/createtorneo/createtorneo.component';
-import { CreategroupComponent } from './components/creategroup/creategroup.component';
 import { CreateteamComponent } from './components/createteam/createteam.component';
-import { ResultComponent } from './components/result/result.component';
 
 //
 import { PerfilComponent } from './components/perfil/perfil.component';
@@ -26,7 +24,6 @@ import { ListuserComponent } from './components/listuser/listuser.component';
 import { RestUserService } from './services/restUser/rest-user.service';
 import { HomeAdminComponent } from './components/home-admin/home-admin.component';
 import { ListorneoComponent } from './components/listorneo/listorneo.component';
-import { ListEquipoComponent } from './components/list-equipo/list-equipo.component';
 import { TablePosicionesComponent } from './components/table-posiciones/table-posiciones.component';
 import { SaveUserByAdminComponent } from './components/save-user-by-admin/save-user-by-admin.component';
 import { SearchPipe } from './pipes/search.pipe';
@@ -37,6 +34,7 @@ import { CreatepartidosComponent } from './components/createpartidos/createparti
 import { ListequiposComponent } from './components/listequipos/listequipos.component';
 import { RestTeamService } from './services/restTeam/rest-team.service';
 import { ListpartidosComponent } from './components/listpartidos/listpartidos.component';
+import { TorneoComponent } from './components/torneo/torneo.component';
 
 
 
@@ -49,14 +47,12 @@ import { ListpartidosComponent } from './components/listpartidos/listpartidos.co
     RegisterComponent,
     LoginComponent,
     CreatetorneoComponent,
-    CreategroupComponent,
+    
     CreateteamComponent,
-    ResultComponent,
     PerfilComponent,
     ListuserComponent,
     HomeAdminComponent,
     ListorneoComponent,
-    ListEquipoComponent,
     TablePosicionesComponent,
     SaveUserByAdminComponent,
     SearchPipe,
@@ -64,6 +60,7 @@ import { ListpartidosComponent } from './components/listpartidos/listpartidos.co
     CreatepartidosComponent,
     ListequiposComponent,
     ListpartidosComponent,
+    TorneoComponent,
 
   ],
   imports: [
@@ -74,7 +71,7 @@ import { ListpartidosComponent } from './components/listpartidos/listpartidos.co
     HttpClientModule,
 
   ],
-  providers: [ RestUserService,RestTorneoService,RestGroupService,RestTeamService],
+  providers: [ RestUserService,RestTorneoService,RestTeamService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

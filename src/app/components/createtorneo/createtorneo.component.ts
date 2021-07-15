@@ -19,14 +19,20 @@ export class CreatetorneoComponent implements OnInit {
   torneoSelected:Torneo;
 
   constructor(private restTorneo:RestTorneoService, private restUser:RestUserService, private router:Router ) { 
-    this.torneo = new Torneo('','','','',[]);
+    this.torneo = new Torneo('','',[],[],[]);
   }
 
   ngOnInit(): void {
-    this.torneoSelected = new Torneo('','','','',[]);
-    this.user = this.restUser.getUser();
-    this.token = this.restUser.getToken();
-    this.torneos = this.user.torneo;
+    this.torneoSelected = new Torneo('','',[],[],[]);
+    this.restTorneo.getTorneos().subscribe((res:any)=>{
+      this.torneos = res.torneo;
+      console.log(this.torneos);
+    })
+    
+
+
+
+
   }
 
 

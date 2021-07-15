@@ -11,7 +11,7 @@ export class RestGroupService {
 
   public token;
   public uri;
-  public grupo;
+  public team;
 
   private extractData(res:Response) {
     let body = res;
@@ -25,14 +25,14 @@ export class RestGroupService {
    }
 
    
-  getGrupo(){
-    let grupo = JSON.parse(localStorage.getItem('grupo'));
-    if(grupo != undefined || grupo != null){
-      this.grupo = grupo
+  getTeam(){
+    let team = JSON.parse(localStorage.getItem('team'));
+    if(team != undefined || team != null){
+      this.team = team
     }else{
-      this.grupo = null;
+      this.team = null;
     }
-    return this.grupo;
+    return this.team;
   }
 
 
@@ -44,31 +44,31 @@ export class RestGroupService {
   }
 
 
-   saveGroup(idTorneo, grupo){
+   saveGroup(idTorneo, team){
     let headers = new HttpHeaders ({
       'Content-Type': 'application/json',
       'Authorization': this.restTonero.getToken()
     })
-    let params = JSON.stringify(grupo);
-    return this.http.post(this.uri+'createGrupo/'+idTorneo, params , {headers:headers}).pipe(map(this.extractData));
+    let params = JSON.stringify(team);
+    return this.http.post(this.uri+'setTeam/'+idTorneo, params , {headers:headers}).pipe(map(this.extractData));
    }
 
 
-   updateGroup(idTorneo,grupo){
+   updateGroup(idTorneo,team){
     let headers = new HttpHeaders ({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
     });
-    let params = JSON.stringify(grupo);
-    return  this.http.put(this.uri+idTorneo+'/updateLiga/'+grupo._id,params,{headers:headers}).pipe(map(this.extractData));
+    let params = JSON.stringify(team);
+    return  this.http.put(this.uri+idTorneo+'/updateTeam/'+team._id,params,{headers:headers}).pipe(map(this.extractData));
    }
 
-   removeGroup(idTorneo,grupo){
+   removeGroup(idTorneo, team){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
     }); 
-    return this.http.put(this.uri+idTorneo+'/removeLiga/'+grupo._id, {name: grupo.name}, {headers:headers}).pipe(map(this.extractData))
+    return this.http.put(this.uri+idTorneo+'/removeTeam/'+team._id,{headers:headers}).pipe(map(this.extractData))
   
    }
 
@@ -78,6 +78,6 @@ export class RestGroupService {
       "Authorization": this.getToken()
     });
   
-    return this.http.get(this.uri+'getGrupo/',{headers: headers}).pipe(map(this.extractData))
+    return this.http.get(this.uri+'getTeams/',{headers: headers}).pipe(map(this.extractData))
    }  
 }

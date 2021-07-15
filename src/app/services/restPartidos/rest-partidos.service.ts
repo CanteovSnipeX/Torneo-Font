@@ -39,13 +39,13 @@ export class RestPartidosService {
     return this.partido;
   }
 
-  savePartido( idGrupo, partido){
+  savePartido( idTorneo, partido){
     let headers = new HttpHeaders ({
       'Content-Type': 'application/json',
       'Authorization': this.getToken()
     })
     let params = JSON.stringify(partido);
-    return this.http.post(this.uri+'createPartido/'+idGrupo,params,{headers:headers}).pipe(map(this.extractData));
+    return this.http.post(this.uri+'createPartido/'+idTorneo,params,{headers:headers}).pipe(map(this.extractData));
   }
 
   getPartidos(){
@@ -54,6 +54,24 @@ export class RestPartidosService {
       "Authorization": this.getToken()
     });
     return this.http.get(this.uri+'getPartidos/',{headers:headers}).pipe((map(this.extractData)));
+  }
+
+  updatePartido(idTorneo,partido){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      "Authorization": this.getToken()
+    });
+    let params = JSON.stringify(partido);
+    return this.http.put(this.uri+idTorneo+'/SetGoals/'+partido._id,params,{headers:headers}).pipe(map(this.extractData));
+  }
+
+  
+  removeTorneo(idTorneo , idPartido ){
+    let headers = new HttpHeaders ({
+      'Content-Type': 'application/json',
+      'Authorization': this.getToken()
+    })
+    return this.http.put(this.uri+idTorneo+'/finalizacionPartido/'+idPartido,null,{headers:headers}).pipe(map(this.extractData));      
   }
 
 

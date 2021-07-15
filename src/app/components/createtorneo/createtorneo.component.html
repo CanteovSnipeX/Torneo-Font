@@ -32,14 +32,6 @@
                             <label  for="inputNametorneo" class="form-label" >Name</label>
                             <input  [(ngModel)]="torneo.name" class="form-control" id="inputNametorneo" type="text" placeholder="Name" name="nametorneo" required>
                         </div>
-                        <div class="form-gruop">
-                          <label for="inputTypetournamen" class="form-label" >Type</label>
-                          <input [(ngModel)]="torneo.typetournamen"  class="form-control" type="text" placeholder="Type" id="inputTypetournamen" name="type" required>
-                      </div>
-                        <div class="form-gruop">
-                            <label for="inputAwards" class="form-label">Awards</label>
-                            <input [(ngModel)]="torneo.awards" class="form-control" type="text" placeholder="Awards" id="inputAwards" name="awards" required>
-                      </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"   [disabled]="!saveTorneo.form.valid">Save</button>
@@ -92,14 +84,6 @@
                             <label for="" class="form-label" >Name</label>
                             <input [(ngModel)]="torneoSelected.name" class="form-control" type="text" name="name">
                         </div>                        
-                        <div class="form-group">
-                          <label for="inputGroupSelect01">Type</label>
-                           <input [(ngModel)]="torneoSelected.typetournamen" type="text" class="form-control" name="typetournamen">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Awards</label>
-                            <input [(ngModel)]="torneoSelected.awards" name="awards"type="text" class="form-control" >
-                        </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -117,10 +101,9 @@
             <div class="card-body">
               <h5 class="card-title text-center">Datas tournament</h5>
               <hr>
+              <br>
               <p class="card-text text-center">{{torneo.name}}</p>
-              <p class="card-text text-center">{{torneo.typetournamen}}</p>
-              <p class="card-text text-center">{{torneo.awards}}</p>
-              <hr>
+              <br>
             <button type="button" class="btn btn-success mx-3" data-bs-toggle="modal" data-bs-target="#exampleModalActualizar" (click)="obtenerData(torneo)">
                 Update
               </button>

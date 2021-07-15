@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { fadeIn } from 'src/app/transitions/transitions';
-import { Equipo } from 'src/app/models/equipo';
+import { Team } from 'src/app/models/equipo';
 import { RestTeamService } from 'src/app/services/restTeam/rest-team.service';
-import { RestGroupService } from 'src/app/services/restGroup/rest-group.service';
-import { RestUserService } from 'src/app/services/restUser/rest-user.service';
 import { UploadsTeamService } from 'src/app/services/uploadsTeam/uploads-team.service';
 import { CONNECTION } from 'src/app/services/global';
+import { RestTorneoService } from 'src/app/services/restTorneo/rest-torneo.service';
+import { Torneo } from 'src/app/models/torneo';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 
 @Component({
   selector: 'app-createteam',
@@ -15,52 +17,86 @@ import { CONNECTION } from 'src/app/services/global';
 })
 export class CreateteamComponent implements OnInit {
 
-  Grupos:[];
-  equipos:[];
-  equipo:Equipo;
-  public grupo;
+  torneos:[]=[];
+  teams:[];
+  team:Team;
+  public toreno;
   public token;
-  public user;
   public uri:string
-  public filesToUploadTeam:Array<File>;
-  teamSelected:Equipo;
-  grupoid:string;
-  team;
+  teamSelected:Team;
+  torneoId:string;
+  
 
 
-  constructor( private uploadTeam:UploadsTeamService , private restTeam:RestTeamService, private restGrupo:RestGroupService, private restUser:RestUserService  ) {
-    this.equipo = new Equipo('','','',[null],'');
-    this.uri = CONNECTION.URI
+  constructor( private uploadTeam:UploadsTeamService , private restTeam:RestTeamService, private restTorneo:RestTorneoService ) {
+    this.team = new Team('','','');
    }
 
   ngOnInit(): void {
-    this.restGrupo.getGroup().subscribe((res:any)=>{
-      this.Grupos = res.grupos;
-      console.log(this.Grupos);
+    this.teamSelected = new Team('','','');
 
+    this.restTorneo.getTorneos().subscribe((res:any)=>{
+      this.torneos = res.torneo;
+      console.log(this.torneos);
     })
-   
+
+    this.restTeam.getTeams().subscribe((res:any)=>{
+      this.teams = res.teams;
+    })
   }
 
   onSubmit(save){
-    this.restTeam.saveTeam(this.grupoid, this.equipo).subscribe((res:any)=>{
+    this.restTeam.saveTeam(this.torneoId, this.team).subscribe((res:any)=>{
       if(res.teamPush){
         save.reset();
-        this.equipo = res.teamPush;
-        localStorage.setItem('team',JSON.stringify(this.equipo));
-        this.grupo = this.restTeam.getTeam();
-        this.equipos = this.grupo.equipo;
+        this.team = res.teamPush;
+        localStorage.setItem('team',JSON.stringify(this.team));
+        this.toreno = this.restTeam.getTeams;
+        this.teams = this.toreno.team;
       }else{
         alert(res.message);
       }
     },
     error => alert(error.error.message))
-    
-    
   }
 
 
-  uploadImage(){
+  obtenerData(team){
+    this.teamSelected = team;
+   }
+
+
+  update(){
+    this.restTeam.updateData(this.torneoId, this.teamSelected).subscribe((res:any)=>{
+      if(res.teamUpdate){
+        alert(res.message);
+        localStorage.setItem('torneo', JSON.stringify(this.torneos));
+      }else{
+        alert(res.message);
+        this.toreno = this.restTorneo.getTorneo();
+        this.teams = this.toreno.team;
+      }
+    },
+    error=>alert(error.error.message))
+  }
+
+
+  remove(){
+    this.restTeam.removeData(this.torneoId , this.teamSelected._id).subscribe((res:any)=>{
+      if(res.Removed){
+          alert(res.message);
+          localStorage.setItem('troneo', JSON.stringify(res.Removed)); 
+          localStorage.setItem('team',JSON.stringify(this.team));
+          this.toreno = this.restTeam.getTeams;
+          this.teams = this.toreno.team;
+      }else{
+        alert(res.message);
+      }
+    },
+    error=>alert(error.error.message))
+  }
+
+  /*uploadImage(){
     this.uploadTeam.fileRequestTeam(this.grupoid, [] ,this.equipo._id, this.filesToUploadTeam, this.token, 'image')
       .then((res:any)=>{
         if(res.team){
@@ -75,6 +111,6 @@ export class CreateteamComponent implements OnInit {
   fileChange(fileInput){
     this.filesToUploadTeam = <Array<File>>fileInput.target.files;
     console.log(this.filesToUploadTeam)
-  }
+  }*/
  
 }
