@@ -5,8 +5,6 @@ import { RestTeamService } from 'src/app/services/restTeam/rest-team.service';
 import { UploadsTeamService } from 'src/app/services/uploadsTeam/uploads-team.service';
 import { CONNECTION } from 'src/app/services/global';
 import { RestTorneoService } from 'src/app/services/restTorneo/rest-torneo.service';
-import { Torneo } from 'src/app/models/torneo';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -24,17 +22,19 @@ export class CreateteamComponent implements OnInit {
   public token;
   public uri:string
   teamSelected:Team;
+  public filesToUploadTeam:Array<File>;
   torneoId:string;
+
   
 
 
   constructor( private uploadTeam:UploadsTeamService , private restTeam:RestTeamService, private restTorneo:RestTorneoService ) {
     this.team = new Team('','','');
+    this.uri = CONNECTION.URI;
    }
 
   ngOnInit(): void {
     this.teamSelected = new Team('','','');
-
     this.restTorneo.getTorneos().subscribe((res:any)=>{
       this.torneos = res.torneo;
       console.log(this.torneos);
@@ -45,14 +45,15 @@ export class CreateteamComponent implements OnInit {
     })
   }
 
+
   onSubmit(save){
     this.restTeam.saveTeam(this.torneoId, this.team).subscribe((res:any)=>{
       if(res.teamPush){
         save.reset();
         this.team = res.teamPush;
         localStorage.setItem('team',JSON.stringify(this.team));
-        this.toreno = this.restTeam.getTeams;
-        this.teams = this.toreno.team;
+        this.toreno = this.restTeam.getTeams();
+        this.ngOnInit();
       }else{
         alert(res.message);
       }
@@ -73,7 +74,7 @@ export class CreateteamComponent implements OnInit {
         localStorage.setItem('torneo', JSON.stringify(this.torneos));
       }else{
         alert(res.message);
-        this.toreno = this.restTorneo.getTorneo();
+        this.toreno = this.restTorneo.getTorneos();
         this.teams = this.toreno.team;
       }
     },
@@ -85,10 +86,9 @@ export class CreateteamComponent implements OnInit {
     this.restTeam.removeData(this.torneoId , this.teamSelected._id).subscribe((res:any)=>{
       if(res.Removed){
           alert(res.message);
-          localStorage.setItem('troneo', JSON.stringify(res.Removed)); 
-          localStorage.setItem('team',JSON.stringify(this.team));
-          this.toreno = this.restTeam.getTeams;
-          this.teams = this.toreno.team;
+          localStorage.setItem('troneo', JSON.stringify(res.Removed));
+          this.toreno = this.restTeam.getTeams();
+          this.ngOnInit();
       }else{
         alert(res.message);
       }
@@ -96,8 +96,10 @@ export class CreateteamComponent implements OnInit {
     error=>alert(error.error.message))
   }
 
-  /*uploadImage(){
-    this.uploadTeam.fileRequestTeam(this.grupoid, [] ,this.equipo._id, this.filesToUploadTeam, this.token, 'image')
+
+
+  uploadImage(){
+    this.uploadTeam.fileRequestTeam(this.teamSelected._id, [] , this.filesToUploadTeam, this.token, 'image')
       .then((res:any)=>{
         if(res.team){
           this.team.image = res.userImage;
@@ -111,6 +113,6 @@ export class CreateteamComponent implements OnInit {
   fileChange(fileInput){
     this.filesToUploadTeam = <Array<File>>fileInput.target.files;
     console.log(this.filesToUploadTeam)
-  }*/
+  }
  
 }

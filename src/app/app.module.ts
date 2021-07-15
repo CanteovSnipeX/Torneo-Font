@@ -34,9 +34,7 @@ import { CreatepartidosComponent } from './components/createpartidos/createparti
 import { ListequiposComponent } from './components/listequipos/listequipos.component';
 import { RestTeamService } from './services/restTeam/rest-team.service';
 import { ListpartidosComponent } from './components/listpartidos/listpartidos.component';
-import { TorneoComponent } from './components/torneo/torneo.component';
-
-
+import { TorneoComponent } from './components/torneo/torneo.component'
 
 @NgModule({
   declarations: [
@@ -69,6 +67,7 @@ import { TorneoComponent } from './components/torneo/torneo.component';
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+
 
   ],
   providers: [ RestUserService,RestTorneoService,RestTeamService],

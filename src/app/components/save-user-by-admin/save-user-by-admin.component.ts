@@ -27,7 +27,7 @@ public token;
 
   onSubmit(statusForm){
     this.restUser.saverUserByAdmin(this.user, this.userLogg._id).subscribe((res:any)=>{
-      if(res.userSaved){
+      if(res.userSavedAdmin){
         alert(res.message);
         this.user = new User('','','','','','','','',[]);
         statusForm.reset();

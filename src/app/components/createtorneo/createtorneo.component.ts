@@ -28,14 +28,12 @@ export class CreatetorneoComponent implements OnInit {
       this.torneos = res.torneo;
       console.log(this.torneos);
     })
-    
-
-
-
-
+    this.user = this.restUser.getUser();
+    this.token = this.restUser.getToken();
   }
 
 
+  
   onSubmit(form){
     this.restTorneo.saveTorneo(this.user._id , this.torneo).subscribe((res:any)=>{
       if(res.torneoPush){
@@ -52,6 +50,7 @@ export class CreatetorneoComponent implements OnInit {
     error=> alert(error.error.message))
   }
 
+  
   obtenerData(torneo){
    this.torneoSelected = torneo;
   }
@@ -72,7 +71,7 @@ export class CreatetorneoComponent implements OnInit {
 
 
   deleteTorneo(){
-    this.restTorneo.removeTorneo(this.user._id , this.torneoSelected._id).subscribe((res:any)=>{
+    this.restTorneo.removeTorneo(this.user._id, this.torneoSelected._id).subscribe((res:any)=>{
       if(res.contactPull){
         localStorage.setItem('user', JSON.stringify(res.contactPull)); 
         this.user = this.restUser.getUser();

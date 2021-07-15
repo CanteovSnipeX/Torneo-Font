@@ -14,11 +14,11 @@ export class UploadsTeamService {
     this.uri =  CONNECTION.URI;
   }
 
-  fileRequestTeam(idGrupo:string,  params: Array<string>, idTeam:string, files: Array<File>,token:string, name:string){
+  fileRequestTeam(idTeam:string,  params: Array<string>, files: Array<File>,token:string, name:string){
     return new Promise((resolve, reject)=>{
       var formData: any = new FormData();
       var xhr = new XMLHttpRequest();
-      let uri = this.uri+idGrupo+'/uploadImageTeam/'+idTeam;
+      let uri = this.uri+idTeam+'/uploadImageTeam/';
 
       for(var i=0; i< files.length; i++){
         formData.append(name, files[i], files[i].name);
